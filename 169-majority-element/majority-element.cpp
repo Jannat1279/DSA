@@ -1,9 +1,18 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        int n=nums.size();
-        int mid=(0+n)/2;
-        return nums[mid];
+        int majority=nums[0],vote=1;
+        for(int i=1;i<nums.size();i++){
+            if(vote==0){
+                vote++;
+                majority=nums[i];
+            }
+            else if(majority==nums[i])vote++;
+            else{
+                vote--;
+            }
+        }
+        return majority;
     }
+
 };
