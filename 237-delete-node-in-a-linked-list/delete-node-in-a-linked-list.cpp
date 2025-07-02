@@ -14,3 +14,14 @@ public:
         node->next=node->next->next;
     }
 };
+/*
+A → B → C → D → NULL
+    ↑
+   node to delete
+
+node->val = node->next->val;
+A->C->C->D (value got copied)
+
+node->next=node->next->next
+A->C->D
+*/
