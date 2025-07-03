@@ -23,4 +23,7 @@ x[1] = 'l' == y[1] = 'l' → ans = "fl"
 x[2] = 'i' != y[2] = 'o' → break
 Output : "fl"
 
+Sorting: O(N log N) where N = number of strings
+Comparing first and last strings: O(M) where M = length of shortest string
+
 */
