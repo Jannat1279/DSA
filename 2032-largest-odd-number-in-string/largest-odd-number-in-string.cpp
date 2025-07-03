@@ -10,3 +10,18 @@ public:
         return "";
     }
 };
+
+/*
+Input:  num = "35420"
+Check from right to left:
+
+num[4] = '0' → even
+
+num[3] = '2' → even
+
+num[2] = '4' → even
+
+num[1] = '5' → odd!
+
+So return num.substr(0, 2) → "35"
+*/
