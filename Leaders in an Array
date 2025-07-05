@@ -1,0 +1,21 @@
+// It is an element which is greater than all the elements on the right.
+vector<int> superiorElement(vector<int>& a){
+  int maxi=INT_MIN;
+  // Start the traversing from the end
+  for(int i=a.size(); i>=0;i--){
+    if(a[i]>maxi){
+      maxi=a[i];}
+    maxi=max(a[i], maxi);
+  }
+  return maxi;
+}
+
+/* Example:
+a[]=[5,4,7,8,1]
+for i=4, maxi=1
+for i=3, maxi=8
+for i=2, maxi=8
+for i=1, maxi=8
+for i=0, maxi=8
+return maxi i.e 8
+*/
