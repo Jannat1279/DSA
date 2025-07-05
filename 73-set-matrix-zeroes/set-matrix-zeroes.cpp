@@ -46,3 +46,33 @@ public:
         }
     }
 };
+/*
+matrix = [
+  [1, 1, 1],
+  [1, 0, 1],
+  [1, 1, 1]
+]
+First row: [1, 1, 1] → no zero → firstRow = false
+First column: 1, 1, 1 → no zero → firstCol = false
+
+Now we check the rest of the matrix from i = 1 and j = 1 onward.
+
+We find matrix[1][1] == 0
+
+matrix[1][0] = 0; // mark the row
+matrix[0][1] = 0; // mark the column
+
+[
+  [1, 0, 1],
+  [0, 0, 1],
+  [1, 1, 1]
+]
+Since firstRow = false and firstCol = false, we do nothing here.
+
+Final Output Matrix
+[
+  [1, 0, 1],
+  [0, 0, 0],
+  [1, 0, 1]
+]
+*/
