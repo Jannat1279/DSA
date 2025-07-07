@@ -26,3 +26,22 @@ public:
         return slow;
     }
 };
+
+/*
+Example:
+✅ For an even-length list:
+Initial list:
+1 → 2 → 3 → 4 → 5 → 6
+
+Steps:
+
+Initially: slow = 1, fast = 1
+
+Step 1: slow = 2, fast = 3
+
+Step 2: slow = 3, fast = 5
+
+Step 3: slow = 4, fast = nullptr → loop ends
+
+➡️ Middle node is 4 (second middle), as slow now points to it.
+*/
