@@ -1,0 +1,35 @@
+struct Node {
+    int data;
+    Node* next;
+
+    Node(int val) {
+        data = val;
+        next = nullptr;
+    }
+};
+
+// Function to calculate length of linked list
+int getLength(Node* head) {
+    int count = 0;
+    Node* current = head;
+
+    while (current != nullptr) {
+        count++;
+        current = current->next;  // Move to next node
+    }
+
+    return count;
+}
+/*
+Example:
+1->2->3->4->NULL
+
+| Step | `current->data` | Action              | `count` |
+| ---- | --------------- | ------------------- | ------- |
+| 1    | 1               | Visit, move to next | 1       |
+| 2    | 2               | Visit, move to next | 2       |
+| 3    | 3               | Visit, move to next | 3       |
+| 4    | 4               | Visit, move to next | 4       |
+| 5    | `nullptr`       | Stop                |         |
+
+*/
