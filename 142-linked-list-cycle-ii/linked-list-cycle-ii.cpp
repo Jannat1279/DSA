@@ -53,3 +53,17 @@ ListNode *detectCycle(ListNode *head) {
         return nullptr;
 }
 };
+
+/*
+Floyd's Cycle Detection + Entry Point Algorithm
+🔁 Phase 1: Detect if a cycle exists
+Use two pointers:
+slow moves one step at a time
+fast moves two steps at a time
+If they meet, a cycle is present
+
+🎯 Phase 2: Find the start of the cycle
+Reset one pointer to the head
+Move both slow and fast one step at a time
+The node where they meet is the entry point of the cycle
+*/
