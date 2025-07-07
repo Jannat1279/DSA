@@ -1,0 +1,35 @@
+// Node structure
+struct Node {
+    int data;
+    Node* next;
+
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+// Function to search for a key in the linked list
+bool search(Node* head, int key) {
+    Node* current = head;
+
+    while (current != nullptr) {
+        if (current->data == key) {
+            return true;  // Found the key
+        }
+        current = current->next; // Move to next node
+    }
+
+    return false; // Key not found
+}
+/*
+Example:
+10 -> 20 -> 30 -> 40
+
+| Step | Current Node | Check       | Result   |
+| ---- | ------------ | ----------- | -------- |
+| 1    | 10           | 10 == 30? ❌ | Continue |
+| 2    | 20           | 20 == 30? ❌ | Continue |
+| 3    | 30           | 30 == 30? ✅ | Found ✅  |
+
+*/
