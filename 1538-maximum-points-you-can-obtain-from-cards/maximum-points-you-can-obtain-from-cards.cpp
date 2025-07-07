@@ -27,3 +27,18 @@ public:
         return maxSum;
     }
 };
+/*
+Example:
+cardPoints = [1, 2, 3, 4, 5, 6, 1]
+k = 3
+Left pick: [1, 2, 3] → sum = 6
+
+| Step | Left Cards Removed | Right Cards Added | lsum | rsum | Total (lsum + rsum) | maxSum |
+| ---- | ------------------ | ----------------- | ---- | ---- | ------------------- | ------ |
+| 1    | 3 (index 2)        | 1 (index 6)       | 3    | 1    | 4                   | 6      |
+| 2    | 2 (index 1)        | 6 (index 5)       | 1    | 7    | 8                   | 8      |
+| 3    | 1 (index 0)        | 5 (index 4)       | 0    | 12   | 12                  | 12     |
+
+Maximum Score = 12
+
+*/
