@@ -36,3 +36,18 @@ public:
         return false; // No cycle
     }
 };
+
+/*
+Example:
+1 → 2 → 3 → 4 → 5
+          ↑     ↓
+           ← ← ←
+
+Step 1: slow = 2, fast = 3
+
+Step 2: slow = 3, fast = 5
+
+Step 3: slow = 4, fast = 3
+
+Step 4: slow = 5, fast = 5 ✅ They meet — cycle detected
+*/
