@@ -1,0 +1,70 @@
+class Solution {
+public:
+
+    // Helper function that performs recursive addition
+    int helper(Node* temp) {
+        // Base case: If we reach the end (NULL), return carry = 1 (we're adding 1 to the last digit)
+        if (temp == NULL) return 1;
+
+        // Recursively move to the last node
+        int carry = helper(temp->next);
+
+        // Add the carry to current node's data
+        int sum = temp->data + carry;
+
+        // Update the current node's data to the last digit of the sum
+        temp->data = sum % 10;
+
+        // Return the carry for the next (previous in original list) node
+        return sum / 10;
+    }
+
+    Node* addOne(Node* head) {
+        // Start the recursive addition from the head
+        int carry = helper(head);
+
+        // If carry is still 1 after full traversal, it means we need a new node at the front
+        if (carry == 1) {
+            Node* newNode = new Node(1);
+            newNode->next = head; // Point the new node to old head
+            return newNode;       // This becomes the new head
+        }
+
+        // No extra carry → return updated head
+        return head;
+    }
+};
+
+/*
+Example:
+head -> 1 -> 2 -> 9
+
+1️⃣ helper(9):
+temp->data = 9
+Recursive call: helper(NULL) → returns 1 (we're adding 1)
+sum = 9 + 1 = 10
+Update node’s data: 9 → 0
+Return carry: 10 / 10 = 1
+
+2️⃣ helper(2):
+temp->data = 2
+Returned carry = 1
+sum = 2 + 1 = 3
+Update node’s data: 2 → 3
+Return carry: 3 / 10 = 0
+
+3️⃣ helper(1):
+temp->data = 1
+Returned carry = 0
+sum = 1 + 0 = 1
+Update node’s data: remains 1
+
+Return carry: 1 / 10 = 0
+
+Now the recursion ends.
+
+Since the final carry is 0, we don’t create any new node.
+
+✅ Final List:
+head -> 1 -> 3 -> 0
+*/
