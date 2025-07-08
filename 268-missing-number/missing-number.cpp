@@ -14,3 +14,15 @@ public:
         return missingNumber;
     }
 };
+/*
+Example:
+nums=[3, 0, 1]
+for(){
+sum=3 //nums[0]
+sum=3 //nums[1]
+sum=4 //nums[2]
+}
+actualSum=3(3+1)/2=6
+
+actualSum-sum=6-4=2 (answer)
+*/
