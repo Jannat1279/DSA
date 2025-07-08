@@ -11,3 +11,10 @@ public:
         return -1;
     }
 };
+/*
+Example:
+nums = [6,8,9,10,12], target=10
+Step 1: mid=index(2) -> 9 low=mid+1
+Step 2: low=3, high=4, mid=3(target=10, index-3)
+return 3;
+*/
