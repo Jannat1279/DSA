@@ -1,0 +1,35 @@
+vector<int> unionArray(vector<int> a, vector<int> b){
+  int n=a.size(), m=b.size();
+  vector<int> temp;
+  set<int> s;
+  for(int i-0;i<n;i++){
+    s.insert(a[i]);
+  }
+  for(int i=0;i<m;i++){
+    s.insert(b[i]);
+  }
+  for(auto it : st){
+    temp.push_backa(it);
+  }
+
+return temp;
+}
+
+/*
+Example:
+vector<int> a = {1, 2, 3, 4};
+vector<int> b = {3, 4, 5, 6};
+
+| **Step** | **Operation**             | **Set Content (`s`)**       | **Explanation**                            |
+| -------- | ------------------------- | --------------------------- | ------------------------------------------ |
+| 1        | Insert `a[0] = 1`         | {1}                         | Add 1 to set                               |
+| 2        | Insert `a[1] = 2`         | {1, 2}                      | Add 2 to set                               |
+| 3        | Insert `a[2] = 3`         | {1, 2, 3}                   | Add 3 to set                               |
+| 4        | Insert `a[3] = 4`         | {1, 2, 3, 4}                | Add 4 to set                               |
+| 5        | Insert `b[0] = 3`         | {1, 2, 3, 4}                | 3 already exists, no change                |
+| 6        | Insert `b[1] = 4`         | {1, 2, 3, 4}                | 4 already exists, no change                |
+| 7        | Insert `b[2] = 5`         | {1, 2, 3, 4, 5}             | Add 5 to set                               |
+| 8        | Insert `b[3] = 6`         | {1, 2, 3, 4, 5, 6}          | Add 6 to set                               |
+| 9        | Copy set to vector `temp` | `temp = {1, 2, 3, 4, 5, 6}` | All unique elements copied in sorted order |
+
+*/
