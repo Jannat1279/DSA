@@ -18,3 +18,20 @@ public:
         return max(maxi, count);
     }
 };
+/*
+Example:
+nums = [1, 1, 0, 1, 1, 1]
+At i = 0, nums[i] = 1 → count = 1
+
+At i = 1, nums[i] = 1 → count = 2
+
+At i = 2, nums[i] = 0 →
+maxi = max(0, 2) = 2
+count = 0
+
+At i = 3, nums[i] = 1 → count = 1
+
+At i = 4, nums[i] = 1 → count = 2
+
+At i = 5, nums[i] = 1 → count = 3
+*/
