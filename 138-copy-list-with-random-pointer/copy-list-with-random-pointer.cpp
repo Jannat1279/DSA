@@ -17,46 +17,42 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        Node* temp = head;
-        // Create an unordered_map to map original
-        // nodes to their corresponding copied nodes
+        // Step 1: Create a hash map to store mapping from original node to
+        // copied node
         unordered_map<Node*, Node*> mpp;
 
-        // Step 1: Create copies of each node
-        // and store them in the map
+        Node* temp = head;
+
+        // Step 2: First pass - create a copy of each node and store in map
+        // This creates all the new nodes with the same values, but doesn't yet
+        // link them
         while (temp != NULL) {
-            // Create a new node with the
-            // same data as the original node
-            Node* newNode = new Node(temp->val);
-            // Map the original node to its
-            // corresponding copied node in the map
-            mpp[temp] = newNode;
-            // Move to the next node in the original list
-            temp = temp->next;
+            Node* newNode =
+                new Node(temp->val); // Create a new node with the same value
+            mpp[temp] = newNode;     // Map original node to the new node
+            temp = temp->next;       // Move to next node
         }
 
         temp = head;
-        // Step 2: Connect the next and random
-        // pointers of the copied nodes using the map
+
+        // Step 3: Second pass - set the 'next' and 'random' pointers of copied
+        // nodes
         while (temp != NULL) {
-            // Access the copied node corresponding
-            // to the current original node
-            Node* copyNode = mpp[temp];
-            // Set the next pointer of the copied node
-            // to the copied node mapped to the
-            // next node in the original list
-            copyNode->next = mpp[temp->next];
-            // Set the random pointer of the copied node
-            // to the copied node mapped to the
-            // random node in the original list
-            copyNode->random = mpp[temp->random];
-            // Move to the next node
-            // in the original list
-            temp = temp->next;
+            Node* copyNode = mpp[temp]; // Get the corresponding copied node
+
+            // Set 'next' pointer of copied node to the copied version of
+            // original's next
+            copyNode->next = mpp[temp->next]; // Handles NULL automatically
+
+            // Set 'random' pointer of copied node to the copied version of
+            // original's random
+            copyNode->random = mpp[temp->random]; // Also handles NULL
+
+            temp = temp->next; // Move to next node
         }
 
-        // Return the head of the
-        // deep copied list from the map
+        // Step 4: Return the head of the copied list (mapped from original
+        // head)
         return mpp[head];
     }
 };
