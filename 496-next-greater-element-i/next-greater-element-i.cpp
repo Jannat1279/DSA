@@ -27,10 +27,45 @@ public:
         }
 
         // Replace elements in nums1 with their next greater from the map
-        for (int i = 0; i < nums1.size(); i++) {
-            nums1[i] = ngeMap[nums1[i]];
-        }
+        // Iterates through each element in nums1
 
-        return nums1;
+        // Looks up that element in the ngeMap
+
+        //  Replaces the current value in nums1 with its next greater element(as
+        //  stored in the map) 
+        for (int i = 0; i < nums1.size(); i++) {
+        nums1[i] = ngeMap[nums1[i]];
     }
-    };
+
+    return nums1;
+}
+}
+;
+/*
+Example:
+nums1 = [4, 1, 2]
+nums2 = [1, 3, 4, 2]
+
+Step 1: Build a Map (from nums2)
+From nums2 = [1, 3, 4, 2], we calculate the next greater element for each:
+
+1 → 3 (next greater on right)
+3 → 4
+4 → no greater element → -1
+2 → no greater element → -1
+
+So, we build:
+ngeMap:
+1 → 3  
+3 → 4  
+4 → -1  
+2 → -1
+
+nums1 = [4, 1, 2]
+
+4 → map[4] = -1 → becomes -1
+1 → map[1] = 3 → becomes 3
+2 → map[2] = -1 → becomes -1
+
+
+*/
