@@ -28,3 +28,22 @@ public:
     return st.empty();
 }
 };
+
+/*
+Example:
+Input:
+s = "{[()]}"
+
+stack: []                   // Start with an empty stack
+
+Read '{'  → push            → stack = ['{']
+Read '['  → push            → stack = ['{', '[']
+Read '('  → push            → stack = ['{', '[', '(']
+Read ')'  → matches '('     → pop     → stack = ['{', '[']
+Read ']'  → matches '['     → pop     → stack = ['{']
+Read '}'  → matches '{'     → pop     → stack = []
+
+Final stack: []             // Empty → all brackets matched
+
+Output : true
+*/
