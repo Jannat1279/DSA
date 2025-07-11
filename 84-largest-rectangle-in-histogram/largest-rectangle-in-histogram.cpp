@@ -18,7 +18,11 @@ public:
 
                 // If the stack is empty, it means the popped bar was the smallest so far,
                 // so its width extends from index 0 to i
-                // Otherwise, width = i - index after popping - 1
+                // !s.empty() If stack still has elements, then:
+               //s.top() is the index of the nearest smaller bar to the left.
+               //So the rectangle extends from s.top() + 1 to i - 1.
+
+
                 int width = s.empty() ? i : i - s.top() - 1;
 
                 // Area = height of the bar * calculated width
@@ -35,3 +39,69 @@ public:
         return maxArea;
     }
 };
+
+/*Example
+vector<int> heights = {2, 1, 5, 6, 2, 3};
+
+ i = 0 → currHeight = 2
+Stack empty → push index 0
+🟦 Stack: [0]
+
+✅ i = 1 → currHeight = 1
+heights[s.top()] = 2 > 1 → pop index 0
+
+width = i = 1 (since stack is empty)
+
+area = 2 * 1 = 2
+
+maxArea = 2
+
+Push index 1
+🟦 Stack: [1]
+
+✅ i = 2 → currHeight = 5
+5 > heights[1] = 1 → push
+🟦 Stack: [1, 2]
+
+✅ i = 3 → currHeight = 6
+6 > 5 → push
+🟦 Stack: [1, 2, 3]
+
+✅ i = 4 → currHeight = 2
+2 < 6 → pop index 3
+width = 4 - 2 - 1 = 1
+area = 6 * 1 = 6
+maxArea = 6
+
+2 < 5 → pop index 2
+width = 4 - 1 - 1 = 2
+area = 5 * 2 = 10
+maxArea = 10
+
+Push index 4
+🟦 Stack: [1, 4]
+
+✅ i = 5 → currHeight = 3
+3 > 2 → push
+🟦 Stack: [1, 4, 5]
+
+✅ i = 6 (sentinel) → currHeight = 0
+0 < 3 → pop index 5
+width = 6 - 4 - 1 = 1
+area = 3 * 1 = 3
+
+0 < 2 → pop index 4
+width = 6 - 1 - 1 = 4
+area = 2 * 4 = 8
+
+0 < 1 → pop index 1
+stack is empty → width = 6
+area = 1 * 6 = 6
+
+Push 6
+🟦 Stack: [6]
+
+✅ Final Result:
+maxArea = 10
+
+*/
