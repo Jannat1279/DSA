@@ -28,3 +28,82 @@ public:
         return water;  // Return the total trapped water
     }
 };
+
+/*
+Example:
+vector<int> height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+Index:     0 1 2 3 4 5 6 7 8 9 10 11
+Height:    0 1 0 2 1 0 1 3 2 1  2  1
+
+🔁 Step-by-step Execution:
+Initialize:
+
+i = 0, j = 11
+maxLeft = 0, maxRight = 0
+water = 0
+
+height[i] < height[j] → 0 < 1
+maxLeft = max(0, 0) = 0
+Water trapped = 0 - 0 = 0
+i++ → i = 1
+
+height[i] < height[j] → 1 < 1 → false
+maxRight = max(0, 1) = 1
+Water trapped = 1 - 1 = 0
+j-- → j = 10
+
+height[i] < height[j] → 1 < 2
+maxLeft = max(0, 1) = 1
+Water trapped = 1 - 1 = 0
+i++ → i = 2
+
+height[i] < height[j] → 0 < 2
+maxLeft = max(1, 0) = 1
+Water trapped = 1 - 0 = 1 ✅
+water = 1
+i++ → i = 3
+
+height[i] < height[j] → 2 < 2 → false
+maxRight = max(1, 2) = 2
+Water trapped = 2 - 2 = 0
+j-- → j = 9
+
+height[i] < height[j] → 2 < 1 → false
+maxRight = max(2, 1) = 2
+Water trapped = 2 - 1 = 1 ✅
+water = 2
+j-- → j = 8
+
+height[i] < height[j] → 2 < 2 → false
+maxRight = max(2, 2) = 2
+Water trapped = 2 - 2 = 0
+j-- → j = 7
+
+height[i] < height[j] → 2 < 3
+maxLeft = max(1, 2) = 2
+Water trapped = 2 - 2 = 0
+i++ → i = 4
+
+height[i] < height[j] → 1 < 3
+maxLeft = max(2, 1) = 2
+Water trapped = 2 - 1 = 1 ✅
+water = 3
+i++ → i = 5
+
+height[i] < height[j] → 0 < 3
+maxLeft = max(2, 0) = 2
+Water trapped = 2 - 0 = 2 ✅
+water = 5
+i++ → i = 6
+
+height[i] < height[j] → 1 < 3
+maxLeft = max(2, 1) = 2
+Water trapped = 2 - 1 = 1 ✅
+water = 6
+i++ → i = 7
+
+Now i == j, loop ends.
+
+✅ Final Output:
+return 6;
+*/
