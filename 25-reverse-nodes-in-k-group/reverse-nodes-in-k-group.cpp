@@ -65,3 +65,46 @@ public:
         return reverseKGroup(head, k, length);
     }
 };
+
+/*
+Example:
+head = [1, 2, 3, 4, 5]
+k = 2
+
+Step 1: Calculate length
+lengthOfLinkedList([1,2,3,4,5]) = 5
+
+🌀 Recursive Reversal Call 1:
+Input: head = 1, length = 5, k = 2
+Group: [1, 2]
+
+Reverse: 1 → 2 becomes 2 → 1
+Remaining list: [3, 4, 5]
+
+Call recursive on reverseKGroup(3, 2, 3)
+Attach: 1->next = result of reverseKGroup(3...)
+
+🌀 Recursive Reversal Call 2:
+Input: head = 3, length = 3, k = 2
+Group: [3, 4]
+
+Reverse: 3 → 4 becomes 4 → 3
+Remaining list: [5]
+
+Call recursive on reverseKGroup(5, 2, 1)
+Attach: 3->next = result of reverseKGroup(5...)
+
+🚫 Recursive Reversal Call 3 (Base Case):
+Input: head = 5, length = 1, k = 2
+Since length < k, return head as is (no reversal)
+
+🔚 Combining the results:
+From call 2:
+Reversed [3, 4] becomes [4, 3], with 3->next = 5
+From call 1:
+Reversed [1, 2] becomes [2, 1], with 1->next = 4
+
+✅ Final Output:
+[2, 1, 4, 3, 5]
+
+*/
