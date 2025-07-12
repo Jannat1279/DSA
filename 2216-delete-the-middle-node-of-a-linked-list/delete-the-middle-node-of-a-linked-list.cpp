@@ -20,6 +20,7 @@ public:
         ListNode* prev = nullptr;
         while (fast != nullptr && fast->next != nullptr) {
             fast = fast->next->next;
+            // It will store the slow
             prev = slow;
             slow = slow->next;
         }
@@ -29,3 +30,35 @@ public:
         return head;
     }
 };
+
+/*
+Example:
+head = [1, 2, 3, 4, 5]
+
+First Iteration (in while loop):
+fast moves to 3 (fast = fast->next->next)
+prev = slow (points to 1)
+slow moves to 2
+
+Second Iteration:
+fast moves to 5
+prev = slow (now points to 2)
+slow moves to 3
+
+Third Iteration:
+fast becomes nullptr (end of list)
+
+Exit loop
+
+Now:
+slow points to node with value 3 (middle node)
+prev points to 2
+
+Deletion:
+
+prev->next = slow->next;  // 2 now points to 4
+delete slow;              // Deletes node 3
+
+✅ Final Output Linked List:
+[1, 2, 4, 5]
+*/
