@@ -22,3 +22,19 @@ public:
         return (long long)findPower(5, (n + 1) / 2) * findPower(4, n / 2)%M;
     }
 };
+
+/*
+Example:
+
+If n = 4:
+
+Even positions = (4 + 1)/2 = 2 → 
+5^2=25
+
+Odd positions = 4 / 2 = 2 → 
+4^2=16
+
+Total: 
+25×16=400
+
+*/
