@@ -35,3 +35,49 @@ public:
         return ans;
     }
 };
+
+/*
+Example:
+nums = [1, 2]
+
+Function Called:
+sub(nums, 0, [])
+
+                          sub(0, [])                
+                     /                 \
+          sub(1, [])                   sub(1, [1])
+         /         \                   /        \
+  sub(2, [])   sub(2, [2])      sub(2, [1])   sub(2, [1,2])
+
+Level-by-Level Breakdown
+1️⃣ sub(0, [])
+index = 0, temp = []
+No base case yet
+Two recursive calls:
+Exclude: sub(1, [])
+Include: temp.push_back(1) → sub(1, [1])
+
+2️⃣ sub(1, [])
+index = 1, temp = []
+Again, two calls:
+Exclude: sub(2, [])
+Include: temp.push_back(2) → sub(2, [2])
+
+3️⃣ sub(2, []) → ✅ Base Case
+index = 2 (end of array)
+Adds [] to ans
+3️⃣ sub(2, [2]) → ✅ Base Case
+Adds [2] to ans
+
+2️⃣ sub(1, [1])
+index = 1, temp = [1]
+Two calls:
+Exclude: sub(2, [1])
+Include: temp.push_back(2) → sub(2, [1, 2])
+
+3️⃣ sub(2, [1]) → ✅ Base Case
+Adds [1] to ans
+
+3️⃣ sub(2, [1, 2]) → ✅ Base Case
+Adds [1, 2] to ans
+*/
