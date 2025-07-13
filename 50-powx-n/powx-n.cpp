@@ -21,3 +21,13 @@ public:
     // Main function that casts int n to long (to handle INT_MIN edge case)
     double myPow(double x, int n) { return solve(x, (long)n); }
 };
+
+/*
+Example:
+solve(2.0, 5)
+→ 2 * solve(4.0, 2)
+→ 2 * solve(16.0, 1)
+→ 2 * 16 * solve(256.0, 0)
+→ 2 * 16 * 1 = 32
+
+*/
