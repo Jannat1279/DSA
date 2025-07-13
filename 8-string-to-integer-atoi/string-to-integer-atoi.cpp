@@ -53,3 +53,66 @@ public:
         return (int)(sign * ans);
     }
 };
+
+// OR(using recursion)
+
+int length(char input[]){
+	int len=0;
+	for(int i=0;input[i]!='\0';i++){
+		len++;
+	}
+	return len;
+}
+
+int stringToNumber(char input[], int last){
+	//Base Case
+	if(last==0){
+		return input[last]-'0';
+	}
+	//Recursive Call
+	int smallAns=stringToNumber(input, last-1);
+	
+	//small work
+	int a=input[last]-'0'; 
+	return smallAns*10+a;
+}
+
+int stringToNumber(char input[]){
+	int len=length(input);
+	return stringToNumber(input, len-1);//last index
+}
+
+/*
+Example:
+char input[] = "1234";
+
+stringToNumber(input, 3)
+Calls: stringToNumber(input, 2)
+a = input[3] - '0' = 4
+Returns: smallAns * 10 + a = 123 * 10 + 4 = 1234
+
+📌 stringToNumber(input, 2)
+Calls: stringToNumber(input, 1)
+a = input[2] - '0' = 3
+Returns: smallAns * 10 + a = 12 * 10 + 3 = 123
+
+📌 stringToNumber(input, 1)
+Calls: stringToNumber(input, 0)
+a = input[1] - '0' = 2
+Returns: smallAns * 10 + a = 1 * 10 + 2 = 12
+
+📌 stringToNumber(input, 0) ✅ Base Case
+Returns: input[0] - '0' = 1
+
+🔁 Backtracking and Final Answer:
+stringToNumber(input, 3) → 1234 ✅
+
+
+| Call                       | `last` | `input[last]` | Returns             | `smallAns` value |
+| -------------------------- | ------ | ------------- | ------------------- | ---------------- |
+| `stringToNumber(input, 0)` | 0      | `'1'`         | 1                   | —                |
+| `stringToNumber(input, 1)` | 1      | `'2'`         | `1*10 + 2 = 12`     | 1                |
+| `stringToNumber(input, 2)` | 2      | `'3'`         | `12*10 + 3 = 123`   | 12               |
+| `stringToNumber(input, 3)` | 3      | `'4'`         | `123*10 + 4 = 1234` | 123              |
+
+*/
