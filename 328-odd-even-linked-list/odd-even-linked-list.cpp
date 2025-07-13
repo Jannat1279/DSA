@@ -45,3 +45,32 @@ public:
         return head;
     }
 };
+
+/*
+Example:
+1 → 3 → 5 → 2 → 4 → NULL
+First iteration:
+odd->next = even->next → 1->3
+odd = odd->next → odd now points to 3
+even->next = odd->next → 2->4
+even = even->next → even now points to 4
+
+Current state:
+Odd: 1 → 3  
+Even: 2 → 4  
+Rest: 5 → NULL
+
+Second iteration:
+odd->next = even->next → 3->5
+odd = odd->next → odd now points to 5
+even->next = odd->next → 4->NULL
+even = even->next → even now points to NULL
+
+Final step:
+odd->next = evenHead → attach even list (2 → 4) after odd list
+
+Final list:
+1 → 3 → 5 → 2 → 4 → NULL
+✅ Output:
+[1, 3, 5, 2, 4]
+*/
