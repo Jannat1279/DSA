@@ -1,0 +1,53 @@
+int secondLargest*(vector<int> nums){
+  int max=nums[0];
+  int slargest=INT_MIN;
+  for(int i=0;i<nums.size();i++){
+    if(nums[i]>max){
+      slargest=max;
+      max=nums[i];
+  }
+    if(nums[i]>slargest && nums[i]<max){
+      slargest=nums[i];
+    }
+  }
+  return slargest;
+}
+/*
+Example:
+vector<int> nums = {10, 5, 20, 8, 20};
+
+🧠 Step-by-step Execution:
+Initial:
+
+max = 10
+slargest = INT_MIN
+
+Iteration 1:
+nums[0] = 10
+Nothing changes.
+
+Iteration 2:
+nums[1] = 5
+Less than max, not greater than slargest → ignore
+
+Iteration 3:
+nums[2] = 20
+Greater than max (10) →
+slargest = 10
+max = 20
+
+Iteration 4:
+nums[3] = 8
+Less than max (20), but less than slargest → ignore
+
+Iteration 5:
+nums[4] = 20
+
+Equal to max, not counted as second largest → ignore
+
+✅ Final Output:
+slargest = 10
+So, the second largest number is 10.
+
+
+*/
