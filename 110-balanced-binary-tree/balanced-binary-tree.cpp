@@ -34,3 +34,36 @@ public:
         return isBalanced(root->left) && isBalanced(root->right);
     }
 };
+
+/*
+Example:
+        1
+       / \
+      2   3
+     /
+    4
+
+🔁 Step-by-Step Function Execution:
+Call: isBalanced(1)
+Call height(2)
+Call height(4) → left and right are NULL → height = 1
+Call height(NULL) → 0
+Height of node 2 = 1 + max(1, 0) = 2
+Call height(3) → no children → height = 1
+Difference = abs(2 - 1) = 1 → ✅ still balanced
+
+Now check subtrees:
+isBalanced(2)
+Call height(4) = 1
+Call height(NULL) = 0
+Difference = 1 → ✅
+
+Call isBalanced(4) → returns true (leaf)
+Call isBalanced(NULL) → true
+So node 2 is ✅ balanced
+
+isBalanced(3) → returns true (leaf)
+
+✅ Final Output:
+true
+*/
