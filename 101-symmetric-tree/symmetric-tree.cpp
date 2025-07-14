@@ -23,3 +23,27 @@ public:
         return check(root->left, root->right);
     }
 };
+
+/*
+Example:
+        1
+       / \
+      2   2
+     / \ / \
+    3  4 4  3
+This tree is symmetric — the left and right subtrees are mirrors of each other.
+
+✅ Step-by-Step Execution:
+We call isSymmetric(root), which internally calls:
+
+check(root->left, root->right)
+= check(2, 2)
+2 == 2 ✅ → check outer and inner pairs:
+
+check(3, 3) → ✅
+
+check(4, 4) → ✅
+
+All pairs matched → return true
+✔️ Final result: true
+*/
