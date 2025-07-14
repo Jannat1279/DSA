@@ -25,3 +25,37 @@ public:
         );
     }
 };
+
+/*
+Example:
+Tree p:
+
+markdown
+Copy
+Edit
+    1
+   / \
+  2   3
+Tree q:
+
+markdown
+Copy
+Edit
+    1
+   / \
+  2   3
+  
+🔁 Function Call:
+isSameTree(p, q)
+🧠 Step-by-Step Execution:
+Both p and q are not NULL → values are equal: 1 == 1
+
+Check isSameTree(p->left, q->left)
+2 == 2 → check left and right (both NULL) → ✅
+
+Check isSameTree(p->right, q->right)
+3 == 3 → check left and right (both NULL) → ✅
+
+All match → return true
+✅ Output: true
+*/
