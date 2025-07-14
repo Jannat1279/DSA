@@ -50,3 +50,53 @@ public:
         return postorder;  // Return the final postorder traversal
     }
 };
+
+/*
+Example:
+        1
+       / \
+      2   3
+     / \
+    4   5
+
+🔁 Step-by-Step Execution (Using Two Stacks):
+Initialization:
+s1 = [1]
+s2 = []
+
+postorder = []
+
+Iteration 1:
+Pop from s1: node = 1
+Push to s2: s2 = [1]
+Push left (2) → s1 = [2]
+Push right (3) → s1 = [2, 3]
+
+Iteration 2:
+Pop from s1: node = 3
+Push to s2: s2 = [1, 3]
+Node 3 has no children
+
+Iteration 3:
+Pop from s1: node = 2
+Push to s2: s2 = [1, 3, 2]
+Push left (4) → s1 = [4]
+Push right (5) → s1 = [4, 5]
+
+Iteration 4:
+Pop from s1: node = 5
+Push to s2: s2 = [1, 3, 2, 5]
+Node 5 has no children
+
+Iteration 5:
+Pop from s1: node = 4
+Push to s2: s2 = [1, 3, 2, 5, 4]
+Node 4 has no children
+
+Now Build Postorder Result:
+Pop all from s2:
+postorder = [4, 5, 2, 3, 1]
+
+✅ Final Output:
+[4, 5, 2, 3, 1]
+*/
