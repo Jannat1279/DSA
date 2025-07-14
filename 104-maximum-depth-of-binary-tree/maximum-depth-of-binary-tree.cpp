@@ -20,3 +20,18 @@ public:
         return 1+max(l,r);
     }
 };
+
+/*
+Example:
+        1
+       / \
+      2   3
+     /
+    4
+Depth of left subtree: 3 (1 → 2 → 4)
+
+Depth of right subtree: 2 (1 → 3)
+
+✅ Output:
+3
+*/
