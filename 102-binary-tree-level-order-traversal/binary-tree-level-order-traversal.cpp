@@ -51,3 +51,42 @@ public:
         return ans;  // Return the complete level order traversal
     }
 };
+
+/*
+Example:
+        1
+       / \
+      2   3
+     /   / \
+    4   5   6
+
+🔍 Step-by-Step Execution:
+Initial State:
+queue = [1]
+ans = []
+
+Level 0:
+size = 1
+Process node 1
+Add children: 2 and 3 to queue
+level = [1]
+ans = [[1]]
+
+Level 1:
+size = 2
+Process node 2, add child 4
+Process node 3, add children 5 and 6
+level = [2, 3]
+ans = [[1], [2, 3]]
+
+Level 2:
+size = 3
+Process node 4 (no children)
+Process node 5 (no children)
+Process node 6 (no children)
+level = [4, 5, 6]
+ans = [[1], [2, 3], [4, 5, 6]]
+
+✅ Final Output:
+[[1], [2, 3], [4, 5, 6]]
+*/
