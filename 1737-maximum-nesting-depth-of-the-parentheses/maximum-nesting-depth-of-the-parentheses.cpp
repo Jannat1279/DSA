@@ -22,3 +22,33 @@ public:
         return res;
     }
 };
+
+/*
+Example:
+string s = "(1+(2*(3+(4/(5+6)))))";
+
+| Character | Action                            | `curr` | `res` |
+| --------- | --------------------------------- | ------ | ----- |
+| `(`       | opening → `curr++`, `res = max()` | 1      | 1     |
+| `1`       | ignore                            | 1      | 1     |
+| `+`       | ignore                            | 1      | 1     |
+| `(`       | opening → `curr++`, `res = max()` | 2      | 2     |
+| `2`       | ignore                            | 2      | 2     |
+| `*`       | ignore                            | 2      | 2     |
+| `(`       | opening → `curr++`, `res = max()` | 3      | 3     |
+| `3`       | ignore                            | 3      | 3     |
+| `+`       | ignore                            | 3      | 3     |
+| `(`       | opening → `curr++`, `res = max()` | 4      | 4 ✅   |
+| `4`       | ignore                            | 4      | 4     |
+| `/`       | ignore                            | 4      | 4     |
+| `(`       | opening → `curr++`, `res = max()` | 5      | 5 ✅   |
+| `5`       | ignore                            | 5      | 5     |
+| `+`       | ignore                            | 5      | 5     |
+| `6`       | ignore                            | 5      | 5     |
+| `)`       | closing → `curr--`                | 4      | 5     |
+| `)`       | closing → `curr--`                | 3      | 5     |
+| `)`       | closing → `curr--`                | 2      | 5     |
+| `)`       | closing → `curr--`                | 1      | 5     |
+| `)`       | closing → `curr--`                | 0      | 5     |
+
+*/
