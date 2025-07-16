@@ -67,3 +67,29 @@ public:
         return ans;
     }
 };
+
+/*
+Example:
+
+        3
+       / \
+      9   20
+         /  \
+        15   7
+
+| Node | Vertical | Level |
+| ---- | -------- | ----- |
+| 3    | 0        | 0     |
+| 9    | -1       | 1     |
+| 20   | 1        | 1     |
+| 15   | 0        | 2     |
+| 7    | 2        | 2     |
+
+📤 Step 2: Build Output
+Traverse the map:
+
+For vertical = -1: Only level 1 → [9]
+For vertical = 0: Level 0 → [3], Level 2 → [15] → [3, 15]
+For vertical = 1: Only level 1 → [20]
+For vertical = 2: Only level 2 → [7]
+*/
