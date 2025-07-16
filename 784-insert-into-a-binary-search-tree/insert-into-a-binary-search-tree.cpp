@@ -35,3 +35,36 @@ public:
         return root;
     }
 };
+
+/*
+Example
+        20
+       /  \
+     10    30
+     / \
+    5  15
+
+🔍 Insertion of 13 — Step-by-Step:
+Initial root: 20
+13 < 20 → go left to node 10
+
+Node 10
+13 > 10 → go right to node 15
+
+Node 15
+13 < 15 → go left, which is NULL → insert 13 here.
+
+✅ Final BST after inserting 13:
+markdown
+Copy
+Edit
+        20
+       /  \
+     10    30
+     / \
+    5  15
+       /
+      13
+
+
+*/
