@@ -27,3 +27,51 @@ public:
         return open + st.size();
     }
 };
+
+/*
+Example:
+string s = "()))((";
+Step-by-step Execution:
+We initialize:
+
+stack<char> st = {}
+int open = 0
+
+Now, we iterate over each character:
+
+1. ch = '('
+It’s an opening bracket, so we push it.
+stack = ['(']
+open = 0
+
+2. ch = ')'
+It's a closing bracket, and the stack is not empty (contains '('), so we pop.
+stack = []
+open = 0
+
+3. ch = ')'
+Stack is empty → unmatched closing bracket
+open++ → open = 1
+
+4. ch = ')'
+Stack still empty → unmatched closing bracket
+open++ → open = 2
+
+5. ch = '('
+Opening bracket → push to stack
+stack = ['(']
+open = 2
+
+6. ch = '('
+Opening bracket → push to stack
+stack = ['(', '(']
+open = 2
+
+Final State:
+stack.size() = 2 (two unmatched '(')
+
+open = 2 (two unmatched ')')
+
+Return:
+return open + st.size();  // 2 + 2 = 4
+*/
