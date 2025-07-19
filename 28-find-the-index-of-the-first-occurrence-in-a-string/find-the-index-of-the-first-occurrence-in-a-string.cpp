@@ -19,3 +19,26 @@ public:
         return -1;
     }
 };
+
+/*
+Example:
+haystack = "mississippi";
+needle = "issip";
+💡 Goal:
+Find the first index where "issip" occurs in "mississippi".
+(If not found, return -1.)
+
+🧠 Step-by-Step Execution:
+haystack length n = 11, needle length m = 5
+We check all substrings of length 5 in haystack:
+
+i	haystack.substr(i, 5)	Equals "issip"?
+0	"missi"	❌ No
+1	"issis"	❌ No
+2	"ssiss"	❌ No
+3	"sissi"	❌ No
+4	"issip"	✅ Yes
+
+✅ Output:
+return 4;
+*/
