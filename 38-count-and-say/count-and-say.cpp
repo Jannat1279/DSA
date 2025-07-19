@@ -30,3 +30,39 @@ public:
         return result;
     }
 };
+
+/*
+Example:
+n = 5
+🔁 Sequence Construction Step-by-Step:
+We’ll build each level recursively:
+
+🧩 n = 1
+Base case → return "1"
+
+🧩 n = 2
+Previous = "1"
+Description: one 1 → "11"
+
+🧩 n = 3
+Previous = "11"
+Description: two 1s → "21"
+
+🧩 n = 4
+Previous = "21"
+Description:
+one 2
+one 1
+→ "1211"
+
+🧩 n = 5
+Previous = "1211"
+Breakdown:
+one 1
+one 2
+two 1s
+→ "111221"
+
+✅ Output:
+"111221"
+*/
