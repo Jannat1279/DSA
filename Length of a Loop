@@ -1,0 +1,9 @@
+int findLength(Node* slow, Node* fast){
+  int cnt=1, fast=fast->next;
+  while(slow!=fast){
+    cnt++;
+    fast=fast->next;
+  }
+return cnt;
+}
+// Can call this method when loop detected i.e slow==fast
