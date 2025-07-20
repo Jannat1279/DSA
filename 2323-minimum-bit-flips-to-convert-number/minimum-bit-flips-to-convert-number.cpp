@@ -22,3 +22,23 @@ public:
         return cnt;
     }
 };
+
+/*
+Example:
+start = 10;   // Binary: 1010  
+goal  = 7;    // Binary: 0111
+
+Step 1: XOR the numbers
+start ^ goal = 1010 ^ 0111 = 1101 (which is 13 in decimal)
+This result (1101) shows where the bits differ:
+
+Bit 0 (rightmost): 0 vs 1 → different → flip
+Bit 1: 1 vs 1 → same → no flip
+Bit 2: 0 vs 1 → different → flip
+Bit 3: 1 vs 0 → different → flip
+
+So there are 3 differing bits.
+
+Step 2: Count the number of 1s in the result
+Binary 1101 → has 3 ones → 3 bit flips required.
+*/
