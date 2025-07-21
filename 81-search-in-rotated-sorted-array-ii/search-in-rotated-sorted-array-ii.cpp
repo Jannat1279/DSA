@@ -46,3 +46,29 @@ public:
         return false;
     }
 };
+
+/*
+Example:
+Input: nums = [1, 0, 1, 1, 1], target = 0
+
+Initial:
+low = 0, high = 4
+✅ 1st iteration:
+mid = 2, nums[mid] = 1
+nums[low] == nums[mid] == nums[high] == 1
+🔁 Can't decide which part is sorted, so:
+low++, high--  → low = 1, high = 3
+
+✅ 2nd iteration:
+mid = (1+3)/2 = 2, nums[mid] = 1
+nums[low] = 0, nums[mid] = 1
+Left half is sorted. Check if target (0) is in range:
+0 <= 0 <= 1 → ✅
+→ high = mid - 1 = 1
+
+✅ 3rd iteration:
+low = 1, high = 1, mid = 1, nums[mid] = 0 → target found!
+
+✅ Output:
+true
+*/
