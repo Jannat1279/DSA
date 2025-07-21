@@ -82,3 +82,64 @@ public:
         m[key] = head->next;  // Update map to point to the new front node
     }
 };
+
+/*
+Example:
+
+LRUCache* cache = new LRUCache(2); // capacity = 2
+
+cache->put(1, 1);  // cache = {1=1}
+cache->put(2, 2);  // cache = {2=2, 1=1}
+cache->get(1);     // returns 1, cache = {1=1, 2=2}
+cache->put(3, 3);  // evicts key 2, cache = {3=3, 1=1}
+cache->get(2);     // returns -1 (not found)
+cache->put(4, 4);  // evicts key 1, cache = {4=4, 3=3}
+cache->get(1);     // returns -1 (not found)
+cache->get(3);     // returns 3
+cache->get(4);     // returns 4
+🧠 Step-by-Step Explanation:
+✅ put(1, 1)
+Cache: {1=1} → Only one item, no eviction.
+
+✅ put(2, 2)
+Cache: {2=2, 1=1}
+Most recently used = 2 (front), least recently used = 1 (back)
+
+✅ get(1) → returns 1
+Key 1 exists.
+Move 1 to front (most recently used).
+Cache: {1=1, 2=2}
+
+✅ put(3, 3)
+Cache is full.
+Evict LRU (key 2).
+Insert key 3 to front.
+Cache: {3=3, 1=1}
+
+✅ get(2) → returns -1
+Key 2 was evicted → not found.
+
+✅ put(4, 4)
+Cache is full.
+Evict LRU (key 1).
+Insert key 4 to front.
+Cache: {4=4, 3=3}
+
+✅ get(1) → returns -1
+Key 1 was evicted → not found.
+
+✅ get(3) → returns 3
+Key 3 exists → move to front.
+Cache: {3=3, 4=4}
+
+✅ get(4) → returns 4
+Key 4 exists → move to front.
+Cache: {4=4, 3=3}
+
+✅ Final Output Sequence:
+get(1) → 1  
+get(2) → -1  
+get(1) → -1  
+get(3) → 3  
+get(4) → 4
+*/
