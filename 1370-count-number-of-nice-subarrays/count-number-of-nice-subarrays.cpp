@@ -40,3 +40,70 @@ public:
         return result;
     }
 };
+
+/*
+Example:
+Input: nums = [2, 1, 2, 1], k = 1
+Expected Output: 6
+We need to count the number of subarrays with exactly 1 odd number.
+
+🔁 Let's walk through it:
+Initial state:
+oddCount = 0
+count = 0
+result = 0
+i = 0, j = 0
+
+Step-by-step:
+✅ j = 0 → nums[0] = 2 (even)
+Not odd → oddCount unchanged
+oddCount != k, so inner while is skipped
+result += count → 0
+j++
+➡️ result: 0, count: 0, oddCount: 0
+
+✅ j = 1 → nums[1] = 1 (odd)
+oddCount = 1
+Reset count = 0
+Now oddCount == k, enter inner while:
+count++ → count = 1
+nums[i] = 2 (even), so i++
+nums[i] = 1 (odd), decrement oddCount = 0, i++
+Exit while
+result += count → result = 1
+j++
+➡️ result: 1, count: 1, oddCount: 0, i: 2
+
+✅ j = 2 → nums[2] = 2 (even)
+Not odd
+oddCount != k, skip inner while
+result += count → result = 1 + 1 = 2
+j++
+➡️ result: 2, count: 1, oddCount: 0
+
+✅ j = 3 → nums[3] = 1 (odd)
+oddCount = 1, reset count = 0
+Now oddCount == k, enter inner while:
+count++ → count = 1
+nums[i] = 2 (even), i++
+nums[i] = 1 (odd), oddCount = 0, i++
+Exit while
+result += count → result = 2 + 1 = 3
+j++
+➡️ result: 3, count: 1, i: 4
+
+Now j = 4 → loop ends
+But remember, each time the while (oddCount == k) loop runs, it counts multiple subarrays starting from i...j that are valid.
+🎯 Final result = 6
+
+Let’s list them all:
+[1]
+[2, 1]
+[1, 2]
+[2, 1, 2]
+[1]
+[2, 1]
+
+✅ Final Answer:
+Output: 6
+*/
