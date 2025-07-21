@@ -27,8 +27,75 @@ public:
     }
 };
 
-/**
- * Your StockSpanner object will be instantiated and called as such:
- * StockSpanner* obj = new StockSpanner();
- * int param_1 = obj->next(price);
- */
+/*
+Example:
+
+StockSpanner ss;
+ss.next(100);
+ss.next(80);
+ss.next(60);
+ss.next(70);
+ss.next(60);
+ss.next(75);
+ss.next(85);
+
+We'll track:
+The input price
+The span returned
+
+Step-by-step:
+1. ss.next(100)
+Stack is empty → no smaller/equal past prices
+Span = 1
+Push (100, 1)
+✅ Return: 1
+📦 Stack: [(100, 1)]
+
+2. ss.next(80)
+80 < 100 → can’t pop
+Span = 1
+Push (80, 1)
+✅ Return: 1
+📦 Stack: [(100, 1), (80, 1)]
+
+3. ss.next(60)
+60 < 80 → can’t pop
+Span = 1
+Push (60, 1)
+✅ Return: 1
+📦 Stack: [(100, 1), (80, 1), (60, 1)]
+
+4. ss.next(70)
+70 > 60 → pop (60, 1) → span += 1 → span = 2
+70 < 80 → stop
+Push (70, 2)
+✅ Return: 2
+📦 Stack: [(100, 1), (80, 1), (70, 2)]
+
+5. ss.next(60)
+60 < 70 → can’t pop
+Span = 1
+Push (60, 1)
+✅ Return: 1
+📦 Stack: [(100, 1), (80, 1), (70, 2), (60, 1)]
+
+6. ss.next(75)
+75 > 60 → pop (60, 1) → span = 2
+75 > 70 → pop (70, 2) → span = 4
+75 < 80 → stop
+Push (75, 4)
+✅ Return: 4
+📦 Stack: [(100, 1), (80, 1), (75, 4)]
+
+7. ss.next(85)
+85 > 75 → pop (75, 4) → span = 5
+85 > 80 → pop (80, 1) → span = 6
+85 < 100 → stop
+Push (85, 6)
+✅ Return: 6
+📦 Stack: [(100, 1), (85, 6)]
+
+Final Output:
+[1, 1, 1, 2, 1, 4, 6]
+
+*/
