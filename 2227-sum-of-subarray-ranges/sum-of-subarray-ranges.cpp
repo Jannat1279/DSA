@@ -23,13 +23,13 @@ nums = {1, 2, 3}
 ✅ Step-by-step Execution:
 All subarrays of nums:
 
-Subarray	Min	Max	Range (Max - Min)
-[1]	1	1	0
-[1, 2]	1	2	1
-[1, 2, 3]	1	3	2
-[2]	2	2	0
-[2, 3]	2	3	1
-[3]	3	3	0
+Subarray	Min	        Max	        Range (Max - Min)
+[1]	        1	         1	                0
+[1, 2]	    1	         2	                1
+[1, 2, 3]	1	         3	                2
+[2]        	2	         2                	0
+[2, 3]	    2	         3                	1
+[3]        	3	         3              	0
 
 Add up all the ranges:
 0 + 1 + 2 + 0 + 1 + 0 = 4
