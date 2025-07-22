@@ -54,9 +54,7 @@ public:
         for (int i = 0; i < n; i++) {
             ll left = i - NSL[i]; // Number of elements to the left where arr[i]
                                   // is the min
-            ll right =
-                NSR[i] -
-                i; // Number of elements to the right where arr[i] is the min
+            ll right = NSR[i] - i; // Number of elements to the right where arr[i] is the min
 
             // Total number of subarrays where arr[i] is the minimum:
             // left choices to start * right choices to end
@@ -71,3 +69,37 @@ public:
         return sum;
     }
 };
+
+/*
+Example:
+Input: arr = [3, 1, 2, 4]
+Indexes:     0  1  2  3
+
+NSL:
+| i | arr[i]  | NSL [i] (index of nearest smaller to left) |
+| - | ------- | ------------------------------------------ |
+| 0 | 3       | -1                                         |
+| 1 | 1       | -1                                         |
+| 2 | 2       | 1                                          |
+| 3 | 4       | 2                                          |
+
+NSR:
+| i | arr [i] | NSR [i] (index of nearest smaller to right) |
+| - | ------- | ------------------------------------------- |
+| 0 | 3       | 1                                           |
+| 1 | 1       | 4 (no smaller, so n=4)                      |
+| 2 | 2       | 4                                           |
+| 3 | 4       | 4                                           |
+
+
+| i | arr [i] | Left (i-NSL) | Right (NSR-i) | Total Ways | Contribution |
+| - | ------- | ------------ | ------------- | ---------- | ------------ |
+| 0 | 3       | 1            | 1             | 1          | 3            |
+| 1 | 1       | 2            | 3             | 6          | 6            |
+| 2 | 2       | 1            | 2             | 2          | 4            |
+| 3 | 4       | 1            | 1             | 1          | 4            |
+
+🧾 Final Sum = 3 + 6 + 4 + 4 = 17
+
+
+*/
