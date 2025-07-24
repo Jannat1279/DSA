@@ -52,3 +52,19 @@ public:
         return count;
     }
 };
+
+/*
+Example:
+vector<int> nums = {1, 0, 1, 0, 1};
+int goal = 2;
+
+| Window (i - j) | Subarray         | `window_sum` | `prefix_zeros` | `count` (Total found) | Explanation                               |
+| -------------- | ---------------- | ------------ | -------------- | --------------------- | ----------------------------------------- |
+| 0 - 0          |  [1]             | 1            | 0              | 0                     | Sum < goal → keep expanding               |
+| 0 - 1          |  [1, 0]          | 1            | 0              | 0                     | Sum < goal → keep expanding               |
+| 0 - 2          |  [1, 0, 1]       | 2            | 0              | 1                     | Found 1 subarray with sum = goal          |
+| 0 - 3          |  [1, 0, 1, 0]    | 2            | 1              | 3                     | Leading zero → count += 1 + prefix_zeros |
+| 0 - 4          |  [1, 0, 1, 0, 1] | 3            | —              | —                     | Too big → shrink window from left         |
+| 1 - 4          |  [0, 1, 0, 1]    | 2            | 0 → 1          | 5                     | Again valid → count += 1 + prefix_zeros  |
+
+*/
