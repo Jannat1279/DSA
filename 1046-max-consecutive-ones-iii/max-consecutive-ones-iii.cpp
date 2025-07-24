@@ -31,3 +31,24 @@ public:
         return max_ones;
     }
 };
+
+/*
+Example:
+int[] nums = {1, 1, 0, 0, 1, 1, 1, 0};
+int k = 2;
+
+| Window (Start - End) | Subarray                  | Zero Count | Action                       | Max Length |
+| -------------------- | ------------------------- | ---------- | ---------------------------- | ---------- |
+| 0 - 0                |  [1]                      | 0          | valid window                 | 1          |
+| 0 - 1                |  [1, 1]                   | 0          | valid window                 | 2          |
+| 0 - 2                |  [1, 1, 0]                | 1          | valid window                 | 3          |
+| 0 - 3                |  [1, 1, 0, 0]             | 2          | valid window                 | 4          |
+| 0 - 4                |  [1, 1, 0, 0, 1]          | 2          | valid window                 | 5          |
+| 0 - 5                |  [1, 1, 0, 0, 1, 1]       | 2          | valid window                 | 6          |
+| 0 - 6                |  [1, 1, 0, 0, 1, 1, 1]    | 2          | valid window                 | 7          |
+| 0 - 7                |  [1, 1, 0, 0, 1, 1, 1, 0] | 3          | too many zeros → slide start |            |
+| 1 - 7                |  [1, 0, 0, 1, 1, 1, 0]    | 3          | still too many zeros         |            |
+| 2 - 7                |  [0, 0, 1, 1, 1, 0]       | 3          | still too many zeros         |            |
+| 3 - 7                |  [0, 1, 1, 1, 0]          | 2          | valid window again           | ✅ still 7  |
+
+*/
