@@ -38,3 +38,29 @@ public:
         return count;
     }
 };
+
+/*
+Example:
+nums = {1, 2, 3}, k = 3
+
+🔹 Explanation:
+At index 0:
+sum = 1
+Not equal to k, and sum - k = -2 not found in map.
+So we add 1:1 to the map.
+
+At index 1:
+sum = 1 + 2 = 3
+Equals k → count = 1
+sum - k = 0 not found in map.
+Add 3:1 to map.
+
+At index 2:
+sum = 3 + 3 = 6
+Not equal to k
+sum - k = 3 exists in map with frequency 1 → add 1 to count.
+Add 6:1 to map.
+
+✅ Final Output:
+return count = 2
+*/
