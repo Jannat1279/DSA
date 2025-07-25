@@ -21,7 +21,7 @@ public:
     ListNode* reverseLinkedList(ListNode* head) {
         if (head == NULL || head->next == NULL)
             return head;
-        ListNode* current=head;
+        ListNode* current = head;
         ListNode* prev = NULL;
         while (current != NULL) {
             ListNode* next = current->next;
@@ -37,7 +37,7 @@ public:
             return true;
         ListNode* slow = head;
         ListNode* fast = head;
-        while (fast != NULL && fast->next!= NULL) {
+        while (fast != NULL && fast->next != NULL) {
             slow = slow->next;
             fast = fast->next->next;
         }
