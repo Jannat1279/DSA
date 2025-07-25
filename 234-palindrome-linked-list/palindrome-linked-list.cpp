@@ -58,3 +58,41 @@ public:
         return true;
     }
 };
+
+/*
+Example:
+A palindrome list:
+
+List: 1 → 2 → 3 → 2 → 1
+🔁 Step-by-Step Execution:
+1. Find the middle using slow/fast pointers
+Step	slow	fast
+1	     1	     1
+2	     2	     3
+3	     3	     1 (fast reaches end)
+
+✅ So slow now points to the middle (node with value 3)
+
+2. Reverse second half starting from slow
+Call reverseLinkedList(slow) on sublist 3 → 2 → 1
+
+✅ Reversed list becomes:
+1 → 2 → 3
+
+3. Compare first and second halves
+First half: 1 → 2 → 3
+Reversed second half: 1 → 2 → 3
+Compare node by node:
+
+first.val	second.val	Match?
+1	            1	      ✅
+2	            2	      ✅
+3	            3	      ✅
+
+4. Restore list (optional but good practice)
+Reverse the second half again to restore original structure.
+
+✅ Final Output:
+true
+
+*/
