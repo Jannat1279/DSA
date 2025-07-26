@@ -1,0 +1,45 @@
+void bfs(int start, vector<vector<int>>& adj, vector<bool>& visited) {
+    queue<int> q;
+    q.push(start);
+    visited[start] = true;
+
+    while (!q.empty()) {
+        int node = q.front();
+        q.pop();
+        cout << node << " ";
+
+        for (int neighbor : adj[node]) {
+            if (!visited[neighbor]) {
+                q.push(neighbor);
+                visited[neighbor] = true;
+            }
+        }
+    }
+}
+
+/*
+Example:
+     0
+    / \
+   1   2
+  /     \
+ 3       4
+
+🧠 Step-by-step BFS Traversal:
+Start at node 0 → visit 0, mark as visited
+Queue: [0] → Pop 0 → Visit 1, 2
+
+Visit node 1
+Queue: [1, 2] → Pop 1 → Visit 3
+
+Visit node 2
+Queue: [2, 3] → Pop 2 → Visit 4
+
+Visit node 3
+Queue: [3, 4] → Pop 3 → No new neighbors
+
+Visit node 4
+Queue: [4] → Pop 4 → No new neighbors
+
+
+*/
