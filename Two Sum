@@ -14,7 +14,7 @@ public:
         return {};
     }
 };
-
+// TC - O(n) and SC - O(1)
 /*
 Example:
 nums = [3, 2, 4]
@@ -31,8 +31,10 @@ complement = 6 - 2 = 4
 
 i = 2, nums[i] = 4
 complement = 6 - 4 = 2
-2 is in map at index 1
-
+2 is in map at index 1O
 ✅ Found: nums[1] + nums[2] = 2 + 4 = 6
 So, return {1, 2}
+
+
+// Theres is a very traditional method for this question which takes 2 loops, there TC - O(n^2)
 */
