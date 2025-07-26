@@ -1,0 +1,33 @@
+void dfs(int node, vector<vector<int>>& adj, vector<bool>& visited) {
+    visited[node] = true;
+    cout << node << " ";
+
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            dfs(neighbor, adj, visited);
+        }
+    }
+}
+
+/*
+Example:
+     0
+    / \
+   1   2
+  /     \
+ 3       4
+
+🔁 Step-by-step Traversal:
+Starting from 0:
+
+Visit 0
+Go to 1
+Go to 3 → no more neighbors → backtrack
+Backtrack to 1, then to 0
+
+Go to 2
+
+Go to 4
+
+So traversal is: 0 → 1 → 3 → 2 → 4
+*/
