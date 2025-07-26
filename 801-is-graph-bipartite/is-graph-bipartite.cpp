@@ -37,3 +37,47 @@ public:
         return true;
     }
 };
+
+
+/*
+Example:
+graph = {
+    {1, 3},   // Node 0 is connected to 1 and 3
+    {0, 2},   // Node 1 is connected to 0 and 2
+    {1, 3},   // Node 2 is connected to 1 and 3
+    {0, 2}    // Node 3 is connected to 0 and 2
+};
+
+➤ At Node 0:
+Color = 0
+Neighbors: 1, 3
+color[0] = 0
+
+➤ Move to Node 1:
+Not colored, so assign 1 (opposite of 0)
+color[1] = 1
+Neighbors: 0, 2
+0 is already colored 0 — ✅ OK (different)
+2 is unvisited → go deeper
+
+➤ Move to Node 2:
+Assign color 0
+color[2] = 0
+Neighbors: 1, 3
+1 is colored 1 — ✅ OK
+3 is unvisited → go deeper
+
+➤ Move to Node 3:
+Assign color 1
+color[3] = 1
+Neighbors: 0, 2
+0 is colored 0 — ✅ OK
+2 is colored 0 — ✅ OK
+
+Step 4: All nodes visited with proper alternating colors
+No adjacent nodes have the same color
+
+So the graph is bipartite
+
+
+*/
