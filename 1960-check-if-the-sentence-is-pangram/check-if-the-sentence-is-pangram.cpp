@@ -14,3 +14,13 @@ public:
         return (count==26);  // Represents all the alphabets
     }
 };
+
+/*
+Example:
+Input: "leetcode"
+Letters in "leetcode": l, e, t, c, o, d
+
+Total unique letters = 6
+count = 6 < 26
+Output: false
+*/
