@@ -1,17 +1,22 @@
 class Solution {
 public:
     bool checkIfPangram(string sentence) {
-        // Assign 26 alphabets with 0 frequency
-        vector<int> arr(26,0);
-        int count=0;
-        for(char& ch:sentence){
-            int index=ch-'a';
-            if(arr[index]==0){
-                arr[index]++;
-                count++;
+        // Create a frequency array for 26 lowercase letters
+        vector<int> arr(26, 0);
+        int count = 0; // To count how many unique letters we've seen
+
+        for (char& ch : sentence) {
+            int index = ch - 'a'; // Convert character to index (0 for 'a', ..., 25 for 'z')
+
+            // If this character is encountered for the first time
+            if (arr[index] == 0) {
+                arr[index]++;  // Mark it as seen
+                count++;       // Increment unique character count
             }
         }
-        return (count==26);  // Represents all the alphabets
+
+        // If all 26 letters are seen at least once, return true
+        return (count == 26);
     }
 };
 
