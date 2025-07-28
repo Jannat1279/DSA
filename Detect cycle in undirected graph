@@ -1,0 +1,110 @@
+/*
+    Company Tags  : Flipkart, Amazon, Samsung, MakeMyTrip, Oracle, Adobe
+    Question Link : https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+*/
+
+// Utility function to detect a cycle in an undirected graph using DFS
+// g: Adjacency list representation of the graph
+// start: Current node being visited
+// visited: A boolean array to keep track of visited nodes
+// parent: The parent of the current node in the DFS tree (to avoid considering the edge back to parent as a cycle)
+bool isCycleUtil(vector<int> g[], int start, vector<bool>& visited, int parent) {
+    // Mark the current node as visited
+    visited[start] = true;
+    
+    // Iterate over all adjacent vertices of the current node
+    vector<int>::iterator it;
+    for(it = g[start].begin(); it != g[start].end(); it++) {
+        // If the adjacent node is the parent, skip it (this is not a cycle)
+        if(*it == parent)
+            continue;
+        
+        // If the adjacent node is already visited and it's not the parent,
+        // then a cycle is detected
+        if(visited[*it] == true)
+            return true;
+        
+        // If the adjacent node is not visited, recursively call isCycleUtil on it.
+        // If the recursive call finds a cycle, propagate true upwards.
+        if(isCycleUtil(g, *it, visited, start))
+            return true;
+            
+    }
+    // No cycle found from this path
+    return false;
+}
+
+// Function to detect a cycle in an undirected graph
+// g: Adjacency list representation of the graph
+// V: Number of vertices in the graph
+bool isCyclic(vector<int> g[], int V) {
+    // Initialize a boolean array to keep track of visited nodes.
+    // All nodes are initially unvisited.
+    vector<bool> visited(V, false);
+    
+    // Iterate over all vertices in the graph.
+    // This loop handles disconnected components of the graph.
+    for(int i = 0; i<V; i++) {
+        // If a node has not been visited yet, start a DFS from it
+        // and check for cycles.
+        // The parent for the initial call is -1 as there's no parent for the root of a DFS tree.
+        if(visited[i] == false && isCycleUtil(g, i, visited, -1))
+            return true; // A cycle is found
+    }
+    // No cycle found in any component of the graph
+    return false;
+}
+
+/*
+Example:
+vector<int> g[4];
+g[0] = {1, 3};
+g[1] = {0, 2};
+g[2] = {1, 3};
+g[3] = {2, 0};
+
+🧭 Step-by-step DFS (Starting from Node 0)
+We call isCyclic(g, 4).
+
+Initialization:
+visited = {false, false, false, false}
+
+Call 1:
+i = 0 → not visited → call isCycleUtil(g, 0, visited, -1)
+isCycleUtil(g, 0, visited, -1)
+visited[0] = true
+Adjacent: {1, 3}
+
+→ Check 1: *it = 1
+1 != parent (-1)
+
+visited[1] = false → recurse into isCycleUtil(g, 1, visited, 0)
+
+isCycleUtil(g, 1, visited, 0)
+visited[1] = true
+Adjacent: {0, 2}
+
+→ *it = 0 (parent) → skip
+→ *it = 2 → not visited → recurse into isCycleUtil(g, 2, visited, 1)
+isCycleUtil(g, 2, visited, 1)
+visited[2] = true
+
+Adjacent: {1, 3}
+
+→ *it = 1 (parent) → skip
+→ *it = 3 → not visited → recurse into isCycleUtil(g, 3, visited, 2)
+isCycleUtil(g, 3, visited, 2)
+visited[3] = true
+
+Adjacent: {2, 0}
+
+→ *it = 2 (parent) → skip
+→ *it = 0 → ⚠️ already visited and not parent → Cycle Detected!
+So, the call returns true all the way back, and final result is:
+
+isCyclic(g, 4) → true
+
+✅ Output:
+true  // There is a cycle
+
+*/
