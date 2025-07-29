@@ -49,21 +49,20 @@ Example:
       2   5
      / \
     1   3
-
-| Step | Current Node   | Stack      | Inorder Vector   | Action                           |
-| ---- | -------------- | ---------- | ---------------- | -------------------------------- |
-| 1    | 4              |  []        |  []              | Push 4, go to left               |
-| 2    | 2              |  [4]       |  []              | Push 2, go to left               |
-| 3    | 1              |  [4, 2]    |  []              | Push 1, go to left               |
-| 4    | NULL           |  [4, 2, 1] |  []              | node is NULL, pop and visit 1    |
-| 5    | 1.right (NULL) |  [4, 2]    |  [1]             | Right is NULL → pop and visit 2  |
-| 6    | 2.right (3)    |  [4]       |  [1, 2]          | Move to right child 3            |
-| 7    | 3              |  [4]       |  [1, 2]          | Push 3, go to left (NULL)        |
-| 8    | NULL           |  [4, 3]    |  [1, 2]          | node is NULL, pop and visit 3    |
-| 9    | 3.right(NULL)  |  [4]       |  [1, 2, 3]       | Right is NULL → pop and visit 4  |
-| 10   | 4.right (5)    |  []        |  [1, 2, 3, 4]    | Move to right child 5            |
-| 11   | 5              |  []        |  [1, 2, 3, 4]    | Push 5, go left (NULL)           |
-| 12   | NULL           |  [5]       |  [1, 2, 3, 4]    | Pop and visit 5                  |
-| 13   | 5.right(NULL)  |  []        |  [1, 2, 3, 4, 5] | Stack empty and node NULL → DONE |
+| Current Node   | Stack      | Inorder Vector   | Action                           |
+| -------------- | ---------- | ---------------- | -------------------------------- |
+| 4              |  []        |  []              | Push 4, go to left               |
+| 2              |  [4]       |  []              | Push 2, go to left               |
+| 1              |  [4, 2]    |  []              | Push 1, go to left               |
+| NULL           |  [4, 2, 1] |  []              | node is NULL, pop and visit 1    |
+| 1.right (NULL) |  [4, 2]    |  [1]             | Right is NULL → pop and visit 2  |
+| 2.right (3)    |  [4]       |  [1, 2]          | Move to right child 3            |
+| 3              |  [4]       |  [1, 2]          | Push 3, go to left (NULL)        |
+| NULL           |  [4, 3]    |  [1, 2]          | node is NULL, pop and visit 3    |
+| 3.right(NULL)  |  [4]       |  [1, 2, 3]       | Right is NULL → pop and visit 4  |
+| 4.right (5)    |  []        |  [1, 2, 3, 4]    | Move to right child 5            |
+| 5              |  []        |  [1, 2, 3, 4]    | Push 5, go left (NULL)           |
+| NULL           |  [5]       |  [1, 2, 3, 4]    | Pop and visit 5                  |
+| 5.right(NULL)  |  []        |  [1, 2, 3, 4, 5] | Stack empty and node NULL → DONE |
 
 */
