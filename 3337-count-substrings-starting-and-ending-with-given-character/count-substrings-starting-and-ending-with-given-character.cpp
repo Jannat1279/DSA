@@ -17,3 +17,19 @@ public:
         return substring;
     }
 };
+
+/*
+Example:
+s = "abaca"
+c = 'a'
+
+| Index | Char | Is `ch == c`? | `count` (after) | `substring += 1 + count` | Total Substrings |
+| ----- | ---- | ------------- | --------------- | ------------------------ | ---------------- |
+| 0     | 'a'  | ✅ Yes         | 1               | `substring += 1 + 0 = 1` | 1                |
+| 1     | 'b'  | ❌ No          | 1               | -                        | 1                |
+| 2     | 'a'  | ✅ Yes         | 2               | `substring += 1 + 1 = 2` | 3                |
+| 3     | 'c'  | ❌ No          | 2               | -                        | 3                |
+| 4     | 'a'  | ✅ Yes         | 3               | `substring += 1 + 2 = 3` | 6                |
+
+
+*/
