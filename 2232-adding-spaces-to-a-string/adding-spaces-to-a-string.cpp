@@ -18,3 +18,16 @@ public:
         return result;
     }
 };
+
+/*
+Example:
+s = "CodeInCpp"
+spaces = {4, 6}
+
+Output:
+"Code In Cpp"
+
+Space at index 4 → "Code InCpp"
+
+Space at index 6 → "Code In Cpp"
+*/
