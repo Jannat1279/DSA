@@ -28,3 +28,17 @@ public:
 }
 
 };
+
+/*
+❌ Example:
+
+s = "ab"
+t = "aa"
+
+Step-by-step mapping:
+'a' → 'a'
+→ Map: mp1[a]=a, mp2[a]=a
+
+'b' → 'a'
+→ mp2[a] == a already, now trying to map another letter 'b' → 'a' → ❌ conflict
+*/
