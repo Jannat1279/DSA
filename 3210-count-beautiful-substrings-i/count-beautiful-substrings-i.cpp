@@ -35,3 +35,39 @@ public:
         return count; // return total beautiful substrings
     }
 };
+
+/*
+Example:
+Input:
+s = "abac"
+k = 2
+
+🔍 Substring Analysis:
+Let's examine all possible substrings of "abac":
+
+"a" → vowels = 1, consonants = 0 → ❌ not equal
+"ab" → vowels = 1 (a), consonants = 1 (b)
+1 * 1 = 1 → not divisible by 2 → ❌
+
+"aba" → vowels = 2 (a, a), consonants = 1 (b) → ❌ not equal
+"abac" → vowels = 2 (a, a), consonants = 2 (b, c)
+2 * 2 = 4 → divisible by 2 → ✅
+
+"b" → consonant → ❌
+"ba" → vowels = 1 (a), consonants = 1 (b)
+1 * 1 = 1 → not divisible by 2 → ❌
+
+"bac" → vowels = 1, consonants = 2 → ❌ not equal
+"a" → vowel → ❌
+"ac" → vowels = 1, consonants = 1
+1 * 1 = 1 → not divisible by 2 → ❌
+
+"c" → consonant → ❌
+
+✅ Final Count:
+Only one substring ("abac") satisfies:
+
+Equal vowels and consonants
+Product divisible by k = 2
+Output: 1
+*/
