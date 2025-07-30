@@ -38,3 +38,27 @@ public:
         return s.substr(startingIndex, maxlen);
     }
 };
+
+/*
+Example:
+s = "babad"
+
+| Substring | Indices (i...j) | Is Palindrome? | Length                   |
+| --------- | --------------- | -------------- | ------------------------ |
+| "b"       | 0...0           | ✅ Yes         | 1                        |
+| "ba"      | 0...1           | ❌ No          | -                        |
+| "bab"     | 0...2           | ✅ Yes         | 3 ← ✅ longest so far    |
+| "baba"    | 0...3           | ❌ No          | -                        |
+| "babad"   | 0...4           | ❌ No          | -                        |
+| "a"       | 1...1           | ✅ Yes         | 1                        |
+| "ab"      | 1...2           | ❌ No          | -                        |
+| "aba"     | 1...3           | ✅ Yes         | 3 ← same length as "bab" |
+| "abad"    | 1...4           | ❌ No          | -                        |
+| "b"       | 2...2           | ✅ Yes         | 1                        |
+| "ba"      | 2...3           | ❌ No          | -                        |
+| "bad"     | 2...4           | ❌ No          | -                        |
+| "a"       | 3...3           | ✅ Yes         | 1                        |
+| "ad"      | 3...4           | ❌ No          | -                        |
+| "d"       | 4...4           | ✅ Yes         | 1                        |
+
+*/
