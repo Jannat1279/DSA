@@ -29,3 +29,26 @@ public:
         return result;
     }
 };
+
+/*
+Example:
+strs = {"eat", "tea", "tan", "ate", "nat", "bat"}
+Sorted forms:
+
+"eat" → "aet"
+"tea" → "aet"
+"tan" → "ant"
+"ate" → "aet"
+"nat" → "ant"
+"bat" → "abt"
+
+So the map becomes:
+
+"aet" → ["eat", "tea", "ate"]
+"ant" → ["tan", "nat"]
+"abt" → ["bat"]
+
+Final output:
+
+[["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+*/
