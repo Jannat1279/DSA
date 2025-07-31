@@ -42,3 +42,38 @@ public:
         return freq1 == freq2;
     }
 };
+
+/*
+Example:
+string word1 = "abc";
+string word2 = "bca";
+
+Step-by-step execution:
+Length check:
+
+Length of word1 = 3
+Length of word2 = 3
+✅ Equal, so continue.
+
+Frequency count:
+
+For word1 = "abc" → freq1 = [1, 1, 1, 0, ..., 0] (1 for a, b, c)
+
+For word2 = "bca" → freq2 = [1, 1, 1, 0, ..., 0] (1 for a, b, c)
+
+Check if both contain the same characters:
+For all 26 letters:
+If freq1[i] == 0 && freq2[i] == 0 → both don’t have this letter → OK.
+If both are non-zero → OK.
+❌ If one has it and the other doesn’t → return false.
+✅ All good here.
+
+Sort frequency arrays:
+sorted freq1 = [0, 0, ..., 1, 1, 1]
+sorted freq2 = [0, 0, ..., 1, 1, 1]
+
+✅ Equal, so return true.
+
+Final Output:
+closeStrings("abc", "bca") ➝ true
+*/
