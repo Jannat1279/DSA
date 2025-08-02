@@ -40,3 +40,34 @@ public:
         return result;
     }
 };
+
+/*
+Example:
+string path = "/a/./b/../../c/";
+Goal:
+Simplify the given absolute path to its canonical form by resolving ".", "..", and redundant slashes.
+
+Step-by-Step Trace:
+Input path tokens when split by '/':
+
+["", "a", ".", "b", "..", "..", "c", ""]
+
+Step	Token	Action	                        Stack content (bottom → top)
+1	    ""	   Empty, ignore	                    (empty)
+2	    "a"	   Push "a" onto stack	                a
+3	    "."    Current directory, ignore	        a
+4	    "b"	   Push "b" onto stack	                a, b
+5	    ".."   Parent directory, pop top "b"	    a
+6	    ".."   Parent directory, pop top "a"	    (empty)
+7	    "c"	   Push "c" onto stack	c
+8	    ""	   Empty, ignore	c
+Building the result:
+Stack contains: c
+
+Construct path by popping stack and prepending /:
+
+result = "/c"
+
+Final Output:
+"/c"
+*/
