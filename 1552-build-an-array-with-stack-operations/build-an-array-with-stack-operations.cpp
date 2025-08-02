@@ -24,3 +24,40 @@ public:
         return result; // Return the list of operations
     }
 };
+
+/*
+Example:
+Given:
+
+target = [2,3,4]
+
+n = 4
+
+Goal:
+Simulate reading numbers from 1 to 4, and build target array using only "Push" and "Pop" operations.
+
+Step-by-step explanation:
+Stream number 1:
+Push 1 onto the stack -> Operation: "Push"
+1 is NOT in target at the current position (2), so immediately Pop it -> Operation: "Pop"
+Stack is empty now.
+
+Stream number 2:
+Push 2 -> "Push"
+2 matches target's first element -> Keep it (do NOT pop)
+
+Move to next target element (3).
+Stream number 3:
+Push 3 -> "Push"
+3 matches next target element -> Keep it
+
+Move to next target element (4).
+Stream number 4:
+Push 4 -> "Push"
+4 matches next target element -> Keep it
+
+Target fully built.
+
+Final sequence of operations:
+"Push", "Pop", "Push", "Push", "Push"
+*/
