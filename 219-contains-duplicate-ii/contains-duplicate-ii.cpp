@@ -30,3 +30,48 @@ public:
         return false; // No such pair found
     }
 };
+
+/*
+Example:
+nums = [1, 2, 3, 1], k=3
+
+Initial State:
+i = 0, j = 0
+st = {}
+
+Step-by-step:
+j = 0:
+Window: [ ]
+st: {}
+nums = 1 not in st
+Add 1 to st
+st = {1}
+j = 1
+
+j = 1:
+Window:
+st: {1}
+nums = 2 not in st
+Add 2 to st
+st = {1, 2}
+j = 2
+
+j = 2:
+Window:
+st = {1, 2}
+nums = 3 not in st
+Add 3 to st
+st = {1, 2, 3}
+j = 3
+
+j = 3:
+Window:
+st = {1, 2, 3}
+nums = 1
+
+Check if 1 is in st → Yes!
+⇒ Return true
+(Because 1 was seen at index 0, and abs(0 - 3) = 3 <= k)
+
+
+*/
