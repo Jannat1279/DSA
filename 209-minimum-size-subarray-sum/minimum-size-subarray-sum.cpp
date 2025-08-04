@@ -23,3 +23,27 @@ public:
         return (minL == n + 1) ? 0 : minL;
     }
 };
+
+/*
+Example:
+nums = [2, 3, 1, 2, 4, 3]
+target=7
+
+| Step | i   | j   | nums[j] | sum       | Action                                                     | minL |
+|-------|-----|-----|---------|-----------|------------------------------------------------------------|------|
+| 1     | 0   | 0   | 2       | 2         | sum < 7, expand window                                      |      |
+| 2     | 0   | 1   | 3       | 5         | sum < 7, expand window                                      |      |
+| 3     | 0   | 2   | 1       | 6         | sum < 7, expand window                                      |      |
+| 4     | 0   | 3   | 2       | 8 (2+3+1+2)| sum ≥ 7, try to shrink window                                |      |
+|       | 0→1 | 3   |         | 6 (8 - 2) | minL = 4 (j - i + 1), move i right, subtract nums[i]       | 4    |
+| 5     | 1   | 4   | 4       | 10 (6+4)  | sum ≥ 7, shrink window                                      |      |
+|       | 1→2 | 4   |         | 7 (10 -3) | minL = 4 (no change), move i right                          | 4    |
+|       | 2→3 | 4   |         | 6 (7 - 1) | minL = 3 (j - i + 1), move i right                          | 3    |
+| 6     | 3   | 5   | 3       | 9 (6+3)   | sum ≥ 7, shrink window                                      |      |
+|       | 3→4 | 5   |         | 7 (9 - 2) | minL = 3 (no change), move i right                          | 3    |
+|       | 4→5 | 5   |         | 3 (7 - 4) | minL = 2 (j - i + 1), move i right                          | 2    |
+
+
+After the loop, the shortest subarray length found is 2, corresponding to the subarray [4,Summary:
+The shortest length of a contiguous subarray whose sum ≥ 7 is 2, and one valid subarray is [4,You can trace the logic step by step for any input using this table-style breakdown!
+*/
