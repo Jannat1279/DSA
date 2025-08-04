@@ -31,3 +31,48 @@ public:
         return count;
     }
 };
+
+/*
+Example:
+nums = [10, 5, 2, 6]
+k=100
+
+Step-by-Step Walkthrough
+Initialize variables:
+
+i = 0, j = 0
+product = 1
+count = 0
+
+j = 0 (Element = 10):
+Multiply product by nums → product = 1 * 10 = 10
+product < k (10 < 100), so no need to shrink window
+Number of subarrays ending at j = (j - i + 1) = (0 - 0 + 1) = 1
+count = 0 + 1 = 1
+
+Current window:
+j = 1 (Element = 5):
+Multiply product by nums → product = 10 * 5 = 50
+product < k (50 < 100), no shrink needed
+Number of subarrays ending at j = (1 - 0 + 1) = 2
+count = 1 + 2 = 3
+
+Current window: [10, j = 2 (Element = 2):
+Multiply product by nums → product = 50 * 2 = 100
+product >= k (100 >= 100), shrink window:
+Divide product by nums[i] → product = 100 / 10 = 10
+Increment i → i = 1
+product < k (10 < 100), stop shrinking
+Number of subarrays ending at j = (2 - 1 + 1) = 2
+count = 3 + 2 = 5
+
+Current window: [5,. j = 3 (Element = 6):
+Multiply product by nums → product = 10 * 6 = 60
+product < k (60 < 100), no shrink needed
+Number of subarrays ending at j = (3 - 1 + 1) = 3
+count = 5 + 3 = 8
+
+Current window: [5,## Final Result:
+
+The total number of contiguous subarrays where the product is less than 100 is 8.
+*/
