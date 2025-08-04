@@ -48,3 +48,27 @@ public:
         return ans;
     }
 };
+
+/*
+Example:
+vector<vector<int>> matrix = {
+    {1,  2,  3},
+    {4,  5,  6},
+    {7,  8,  9}
+};
+🧠 Spiral Traversal Steps
+Let's walk through the matrix in spiral order:
+
+Left to Right (Top Row) → 1 2 3
+
+Top to Bottom (Right Column) → 6 9
+
+Right to Left (Bottom Row) → 8 7
+
+Bottom to Top (Left Column) → 4
+
+Left to Right (Middle Row) → 5
+
+✅ Final Output
+[1, 2, 3, 6, 9, 8, 7, 4, 5]
+*/
