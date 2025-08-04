@@ -51,4 +51,5 @@ int k = 2;
 | 2 - 7                |  [0, 0, 1, 1, 1, 0]       | 3          | still too many zeros         |            |
 | 3 - 7                |  [0, 1, 1, 1, 0]          | 2          | valid window again           | ✅ still 7  |
 
+First revision - 04/08/25
 */
