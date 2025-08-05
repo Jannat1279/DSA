@@ -1,8 +1,7 @@
 class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-        unordered_map<int, int>
-            ngeMap; // Stores the next greater element for each number in nums2
+        unordered_map<int, int> ngeMap; // Stores the next greater element for each number in nums2
         stack<int> st; // Monotonic stack to find the next greater element
 
         // Traverse nums2 from right to left
