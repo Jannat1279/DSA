@@ -49,22 +49,17 @@ i = 5 → nums[5 % 3] = nums[2] = 1
 Stack is empty → nothing to pop
 
 i >= n → don’t fill nge
-
 Push 1 → st = [1]
 
 i = 4 → nums[4 % 3] = nums[1] = 2
 st.top() = 1 < 2 → pop 1 → st = []
-
 Stack empty
-
 i >= n → don’t fill nge
-
 Push 2 → st = [2]
 
 i = 3 → nums[3 % 3] = nums[0] = 1
 st.top() = 2 > 1 → no pop
 i >= n → don’t fill nge
-
 Push 1 → st = [2, 1]
 
 i = 2 → nums[2 % 3] = nums[2] = 1
@@ -74,18 +69,14 @@ Now st.top() = 2 > 1
 i < n → nge[2] = 2 ✅
 
 Push 1 → st = [2, 1]
-
 i = 1 → nums[1] = 2
 st.top() = 1 < 2 → pop
 st.top() = 2 == 2 → pop → st = []
-
 Stack empty → nge[1] = -1 ✅
 
 Push 2 → st = [2]
-
 i = 0 → nums[0] = 1
 st.top() = 2 > 1 → no pop
-
 nge[0] = 2 ✅
 
 Push 1 → st = [2, 1]
