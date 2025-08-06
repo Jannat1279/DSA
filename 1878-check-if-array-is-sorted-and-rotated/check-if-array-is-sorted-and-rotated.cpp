@@ -11,3 +11,4 @@ public:
         return (count<=1);
     }
 };
+// Key point: A rotated and sorted array cannot have more than 1 drop.
