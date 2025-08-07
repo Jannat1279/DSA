@@ -27,20 +27,3 @@ public:
         return prev;
     }
 };
-
-/*
-Example:
-1 → 2 → 3 → 4 → 5 → NULL
-
-| Step | `curr->val` | Reversed Part            | Remaining Part |
-| ---- | ----------- | ------------------------ | -------------- |
-| 1    | 1           | 1 → NULL                 | 2 → 3 → 4 → 5  |
-| 2    | 2           | 2 → 1 → NULL             | 3 → 4 → 5      |
-| 3    | 3           | 3 → 2 → 1 → NULL         | 4 → 5          |
-| 4    | 4           | 4 → 3 → 2 → 1 → NULL     | 5              |
-| 5    | 5           | 5 → 4 → 3 → 2 → 1 → NULL | NULL           |
-
-At the end, the reversed list is:
-
-5 → 4 → 3 → 2 → 1 → NULL
-*/
