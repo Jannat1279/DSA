@@ -1,20 +1,18 @@
 class Solution {
 public:
-    int sum=0;
-    int countDigits(int num){
-        int count=0;
-        sum=0;
-        while(num!=0){
-            sum+=num%10;
-            num/=10;
-            count++;
-        }
-        return count;
-    }
+   
     int addDigits(int num) {
-        while(countDigits(num)>1){
-            num=sum;
-        }
-        return sum;
+        // If num is 0, the sum of its digits is 0
+        if (num == 0)
+            return 0;
+
+        // Digital root property:
+        // The sum of digits repeats every multiple of 9.
+        // If num is divisible by 9 (and not zero), its digital root is 9
+        if (num % 9 == 0)
+            return 9;
+
+        // Otherwise, the digital root is simply num % 9
+        return num % 9;
     }
 };
