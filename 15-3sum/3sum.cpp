@@ -38,8 +38,12 @@ public:
         }
 
         // Transfer unique triplets from set to result vector
-        for (auto it = uniqueTriplets.begin(); it != uniqueTriplets.end(); ++it) {
-            result.push_back(*it);
+        // for (auto it = uniqueTriplets.begin(); it != uniqueTriplets.end(); ++it) {
+        //     result.push_back(*it);
+        // }
+
+        for(auto& it:uniqueTriplets){
+            result.push_back(it);
         }
 
         return result; // Return all triplets with sum = 0
