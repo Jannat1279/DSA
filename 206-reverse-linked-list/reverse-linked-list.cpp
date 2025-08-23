@@ -27,3 +27,19 @@ public:
         return prev;
     }
 };
+
+/*
+Example:
+
+Suppose the list is:
+1 -> 2 -> 3 -> 4 -> NULL
+
+Steps during iteration:
+Reverse 1 -> NULL, prev = 1, curr = 2
+Reverse 2 -> 1, prev = 2, curr = 3
+Reverse 3 -> 2 -> 1, prev = 3, curr = 4
+Reverse 4 -> 3 -> 2 -> 1, prev = 4, curr = NULL
+
+Finally, return prev (which is node 4), giving:
+4 -> 3 -> 2 -> 1 -> NULL
+*/
