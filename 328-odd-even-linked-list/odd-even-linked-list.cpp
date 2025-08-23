@@ -48,29 +48,34 @@ public:
 
 /*
 Example:
-1 → 3 → 5 → 2 → 4 → NULL
-First iteration:
+Value:  1 → 2 → 3 → 4 → 5
+
+Step 1: Initialization
+odd = head (1)
+even = head->next (2)
+evenHead = 2 (so we can connect later)
+
+Step 2: First Iteration
 odd->next = even->next → 1->3
-odd = odd->next → odd now points to 3
+Move odd = 3
+Now list looks like:
+1 → 3 → 4 → 5 → NULL
+and even part still connected as:
+2 → 4 → 5 → NULL
 even->next = odd->next → 2->4
-even = even->next → even now points to 4
+Move even = 4
 
-Current state:
-Odd: 1 → 3  
-Even: 2 → 4  
-Rest: 5 → NULL
-
-Second iteration:
+Step 3: Second Iteration
 odd->next = even->next → 3->5
-odd = odd->next → odd now points to 5
+Move odd = 5
+Now odd part looks like:
+1 → 3 → 5 → NULL
 even->next = odd->next → 4->NULL
-even = even->next → even now points to NULL
+Move even = NULL (loop ends)
 
-Final step:
-odd->next = evenHead → attach even list (2 → 4) after odd list
+Step 4: Attach Even List
+Connect odd’s tail (5) to evenHead (2)
 
-Final list:
+Final rearranged list:
 1 → 3 → 5 → 2 → 4 → NULL
-✅ Output:
-[1, 3, 5, 2, 4]
 */
