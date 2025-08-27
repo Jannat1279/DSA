@@ -18,66 +18,35 @@ public:
     // }
 
     // Recursion:
-    vector<vector<int>> ans;
+    vector<vector<int>> ans; // To store all subsets
+
+    // Recursive helper function
     void sub(vector<int>& nums, int i, vector<int> temp) {
+        // Base Case: when index reaches end of array
         if (i == nums.size()) {
-            ans.push_back(temp);
+            ans.push_back(temp); // Add the current subset to the result
             return;
         }
 
-        sub(nums, i + 1, temp);
+        // Recursive call WITHOUT including nums[i]
+        // sub(nums, i + 1, temp); // Explore path excluding current element
+
+        // // Small work: include the current element in the subset
+        // temp.push_back(nums[i]);
+
+        // // Recursive call WITH including nums[i]
+        // sub(nums, i + 1, temp); // Explore path including current element
+
         temp.push_back(nums[i]);
-        sub(nums, i + 1, temp);
+        sub(nums,i+1,temp);
+        temp.pop_back();
+        sub(nums,i+1,temp);
     }
+
+    // Main function
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> temp;
-        sub(nums, 0, temp);
+        vector<int> temp;   // Temporary subset
+        sub(nums, 0, temp); // Start recursion from index 0
         return ans;
     }
 };
-
-/*
-Example:
-nums = [1, 2]
-
-Function Called:
-sub(nums, 0, [])
-
-                          sub(0, [])                
-                     /                 \
-          sub(1, [])                   sub(1, [1])
-         /         \                   /        \
-  sub(2, [])   sub(2, [2])      sub(2, [1])   sub(2, [1,2])
-
-Level-by-Level Breakdown
-1️⃣ sub(0, [])
-index = 0, temp = []
-No base case yet
-Two recursive calls:
-Exclude: sub(1, [])
-Include: temp.push_back(1) → sub(1, [1])
-
-2️⃣ sub(1, [])
-index = 1, temp = []
-Again, two calls:
-Exclude: sub(2, [])
-Include: temp.push_back(2) → sub(2, [2])
-
-3️⃣ sub(2, []) → ✅ Base Case
-index = 2 (end of array)
-Adds [] to ans
-3️⃣ sub(2, [2]) → ✅ Base Case
-Adds [2] to ans
-
-2️⃣ sub(1, [1])
-index = 1, temp = [1]
-Two calls:
-Exclude: sub(2, [1])
-Include: temp.push_back(2) → sub(2, [1, 2])
-
-3️⃣ sub(2, [1]) → ✅ Base Case
-Adds [1] to ans
-
-3️⃣ sub(2, [1, 2]) → ✅ Base Case
-Adds [1, 2] to ans
-*/
