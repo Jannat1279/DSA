@@ -4,7 +4,7 @@ public:
         vector<int> pos, neg;
         int m = nums.size();
         for (int i = 0; i < m; i++) {
-            if (nums[i] > 0) {
+            if (nums[i] >= 0) {
                 pos.push_back(nums[i]);
             } else {
                 neg.push_back(nums[i]);
