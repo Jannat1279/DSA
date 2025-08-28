@@ -1,52 +1,35 @@
 class Solution {
 public:
-    // vector<vector<int>> subsets(vector<int>& nums) {
-    //     int n=nums.size();
-    //     int subset=1<<n;
-    //     vector<vector<int>>ans;
 
-    //     for(int num=0;num<subset;num++){
-    //         vector<int>list;
-    //         for(int i=0;i<n;i++){
-    //             if(num&1<<i){
-    //                 list.push_back(nums[i]);
-    //             }
-    //         }
-    //         ans.push_back(list);
-    //     }
-    //     return ans;
-    // }
-
-    // Recursion:
-    vector<vector<int>> ans; // To store all subsets
+    // Recursion approach to generate all subsets
+    vector<vector<int>> ans; // Stores all subsets
 
     // Recursive helper function
+    // nums -> input array
+    // i    -> current index in nums
+    // temp -> stores the current subset being formed
     void sub(vector<int>& nums, int i, vector<int> temp) {
-        // Base Case: when index reaches end of array
+        // Base Case: if we reach the end of nums, add the current subset
         if (i == nums.size()) {
-            ans.push_back(temp); // Add the current subset to the result
+            ans.push_back(temp); // Store the subset
             return;
         }
 
-        // Recursive call WITHOUT including nums[i]
-        // sub(nums, i + 1, temp); // Explore path excluding current element
+        // Choice 1: Include nums[i] in the current subset
+        temp.push_back(nums[i]);  
+        sub(nums, i + 1, temp);
 
-        // // Small work: include the current element in the subset
-        // temp.push_back(nums[i]);
-
-        // // Recursive call WITH including nums[i]
-        // sub(nums, i + 1, temp); // Explore path including current element
-
-        temp.push_back(nums[i]);
-        sub(nums,i+1,temp);
+        // Backtrack: remove nums[i] and explore subsets without it
         temp.pop_back();
-        sub(nums,i+1,temp);
+
+        // Choice 2: Exclude nums[i] from the current subset
+        sub(nums, i + 1, temp);
     }
 
     // Main function
     vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> temp;   // Temporary subset
-        sub(nums, 0, temp); // Start recursion from index 0
-        return ans;
+        vector<int> temp;       // Temporary subset (initially empty)
+        sub(nums, 0, temp);     // Start recursion from index 0
+        return ans;             // Return all subsets
     }
 };
