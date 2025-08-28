@@ -25,6 +25,20 @@ public:
 
 /*
 Example:
+nums=[1,2,3]
 
+nums = [3, 2, 1]
+Step 1
+i = 1 → nums[1]=2, nums[2]=1 → 2 >= 1, so i = 0
+nums[0]=3, nums[1]=2 → 3 >= 2, so i = -1
+No pivot found (means array is descending).
+
+Step 2
+Skipped, because i = -1.
+
+Step 3
+Reverse entire array → [1, 2, 3].
+
+✅ That’s the next permutation after [3,2,1].
 
 */
