@@ -36,42 +36,47 @@ public:
 
 /*
 Example:
-vector<vector<int>> intervals = {{1, 4}, {2, 5}, {7, 9}};
-🧠 Step 1: Sort based on the starting time
-Using:
-sort(intervals.begin(), intervals.end(), [](vector<int> &a, vector<int> &b) {
-    return a[0] < b[0];
-});
-This sorts the intervals as:
 
-{{1, 4}, {2, 5}, {7, 9}}
-Here it was already sorted, so nothing changes.
+Step 1: Input
+intervals = [[1,3], [2,6], [8,10], [15,18]]
 
-🧠 Step 2: Initialize
-vector<int> curr = intervals[0];  // curr = {1, 4}
-We will compare this with the next intervals to see if they overlap.
+Step 2: Sort intervals by start
+After sort → [[1,3], [2,6], [8,10], [15,18]]
+(Already sorted, so nothing changes.)
 
-🔁 Step 3: Loop through the rest
-i = 1 → intervals[i] = {2, 5}
-Check if overlapping:
-Is curr[1] < intervals[i][0] → Is 4 < 2? → ❌ No overlap
+Step 3: Initialize
+curr = [1,3]
+res = []
 
-So merge:
-curr[1] = max(4, 5) = 5 → curr becomes {1, 5}
-i = 2 → intervals[i] = {7, 9}
+Step 4: Traverse
+i = 1 → interval = [2,6]
+curr = [1,3], new = [2,6]
+Overlap check: 3 ≥ 2 ✅ (they overlap)
+Merge → curr = [1, max(3,6)] = [1,6]
+curr = [1,6]
+res = []
 
-Check if overlapping:
+i = 2 → interval = [8,10]
+curr = [1,6], new = [8,10]
+Overlap check: 6 < 8 ❌ (no overlap)
+Push curr → res = [[1,6]]
+Update curr = [8,10]
+curr = [8,10]
+res = [[1,6]]
 
-Is curr[1] < intervals[i][0] → Is 5 < 7? ✅ Yes → No overlap
 
-So:
-res.push_back(curr);  // res = {{1, 5}}
-curr = {7, 9};
+i = 3 → interval = [15,18]
+curr = [8,10], new = [15,18]
+Overlap check: 10 < 15 ❌ (no overlap)
+Push curr → res = [[1,6],[8,10]]
+Update curr = [15,18]
+curr = [15,18]
+res = [[1,6],[8,10]]
 
-✅ After loop ends:
-We push the last curr to result:
-res.push_back(curr);  // res = {{1, 5}, {7, 9}}
+Step 5: Push last interval
+res = [[1,6],[8,10],[15,18]]
 
-🧾 Final Output:
-{{1, 5}, {7, 9}}
+✅ Final Output:
+
+[[1,6],[8,10],[15,18]]
 */
