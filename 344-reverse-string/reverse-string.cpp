@@ -14,3 +14,21 @@ public:
     }
 };
 
+/*
+Example:
+
+s = ['h','e','l','l','o']
+
+n = 5, st = 0, e = 4
+Swap s[0] and s[4] → ['o','e','l','l','h']
+
+Now st = 1, e = 3.
+st = 1, e = 3
+Swap s[1] and s[3] → ['o','l','l','e','h']
+
+Now st = 2, e = 2.
+st = 2, e = 2 → loop stops because st is not < e.
+
+Final Output:
+s = ['o','l','l','e','h']
+*/
