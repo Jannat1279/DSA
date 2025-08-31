@@ -8,18 +8,6 @@
  */
 class Solution {
 public:
-    // bool hasCycle(ListNode *head) {
-    //     set<ListNode*> sLL;
-    //     ListNode *curr=head;
-    //     while(curr!=NULL){
-    //         if(sLL.contains(curr))return true;
-    //         sLL.insert(curr);
-    //         curr=curr->next;
-    //     }
-        
-    //     return false;
-    // }
-
     bool hasCycle(ListNode *head) {
         ListNode* slow = head; // Tortoise
         ListNode* fast = head; // Hare
