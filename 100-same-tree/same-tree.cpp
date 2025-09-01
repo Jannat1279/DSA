@@ -29,18 +29,11 @@ public:
 /*
 Example:
 Tree p:
-
-markdown
-Copy
-Edit
     1
    / \
   2   3
+  
 Tree q:
-
-markdown
-Copy
-Edit
     1
    / \
   2   3
