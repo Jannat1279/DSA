@@ -25,10 +25,9 @@ public:
 /*
 Example:
 vector<int> nums = {1, 2, 1, 3, 5, 6, 4};
+
 The peak(s) can be at index:
-
 1 (value 2), since 2 > 1 and 2 > 1
-
 5 (value 6), since 6 > 5 and 6 > 4
 
 The function can return any peak.
