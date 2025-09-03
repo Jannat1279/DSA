@@ -1,8 +1,7 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int majority =
-            nums[0];  // Assume the first element is the majority candidate
+        int majority = nums[0];  // Assume the first element is the majority candidate
         int vote = 1; // Initialize vote count for the current candidate
 
         // Start from the second element
