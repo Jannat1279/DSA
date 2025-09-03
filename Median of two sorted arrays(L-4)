@@ -1,0 +1,37 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
+        
+        // Temporary array to store the merged result of nums1 and nums2
+        vector<int> temp(m + n);
+        
+        int i = 0, j = 0, k = 0; // i for nums1, j for nums2, k for temp
+        
+        // Merge both sorted arrays (like in merge sort)
+        while(i < m && j < n) {
+            if(nums1[i] < nums2[j])
+                temp[k++] = nums1[i++];   // take element from nums1
+            else
+                temp[k++] = nums2[j++];   // take element from nums2
+        }
+        
+        // Copy any remaining elements from nums1
+        while(i < m) 
+            temp[k++] = nums1[i++];
+        
+        // Copy any remaining elements from nums2
+        while(j < n) 
+            temp[k++] = nums2[j++];
+        
+        int size = m + n;
+        
+        // If total size is odd → return middle element
+        if(size % 2 != 0) 
+            return temp[size / 2];
+        
+        // If even → return average of two middle elements
+        return (temp[size / 2] + temp[(size / 2) - 1]) / 2.0;
+    }
+};
