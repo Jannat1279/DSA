@@ -2,7 +2,7 @@ class Solution {
 public:
     // Function to compute the maximum profit using recursion + memoization
     // (Top-down DP)
-    long getAns(vector<int>& Arr, int ind, int buy, int n, vector<vector<long>>& dp) {
+    long getAns(vector<int>& prices, int ind, int buy, int n, vector<vector<long>>& dp) {
         // Base Case: If we reach the end of the array, no further transactions
         // are possible.
         if (ind == n) {
@@ -18,18 +18,18 @@ public:
 
         if (buy == 0) {
             // Case 1: Skip buying today → move to next day, still allowed to
-            // buy. Case 2: Buy today → reduce profit by Arr[ind], move to next
+            // buy. Case 2: Buy today → reduce profit by prices[ind], move to next
             // day, now allowed to sell.
-            profit = max(0 + getAns(Arr, ind + 1, 0, n, dp), // Do nothing
-                         -Arr[ind] + getAns(Arr, ind + 1, 1, n, dp) // Buy stock
+            profit = max(0 + getAns(prices, ind + 1, 0, n, dp), // Do nothing
+                         -prices[ind] + getAns(prices, ind + 1, 1, n, dp) // Buy stock
             );
         } else {
             // buy == 1 (we currently hold a stock, so we can sell it)
             // Case 1: Skip selling today → move to next day, still holding the
-            // stock. Case 2: Sell today → add Arr[ind] to profit, move to next
+            // stock. Case 2: Sell today → add prices[ind] to profit, move to next
             // day, now can buy again.
-            profit = max(0 + getAns(Arr, ind + 1, 1, n, dp),       // Do nothing
-                         Arr[ind] + getAns(Arr, ind + 1, 0, n, dp) // Sell stock
+            profit = max(0 + getAns(prices, ind + 1, 1, n, dp),       // Do nothing
+                         prices[ind] + getAns(prices, ind + 1, 0, n, dp) // Sell stock
             );
         }
 
