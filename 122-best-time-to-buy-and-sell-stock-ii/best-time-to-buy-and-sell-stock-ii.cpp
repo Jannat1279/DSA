@@ -2,7 +2,7 @@ class Solution {
 public:
     // Function to compute the maximum profit using recursion + memoization
     // (Top-down DP)
-    long getAns(vector<int>& prices, int ind, int buy, int n, vector<vector<long>>& dp) {
+    int getAns(vector<int>& prices, int ind, int buy, int n, vector<vector<int>>& dp) {
         // Base Case: If we reach the end of the array, no further transactions
         // are possible.
         if (ind == n) {
@@ -14,7 +14,7 @@ public:
             return dp[ind][buy];
         }
 
-        long profit = 0;
+        int profit = 0;
 
         if (buy == 0) {
             // Case 1: Skip buying today → move to next day, still allowed to
@@ -46,10 +46,10 @@ public:
 
         // Initialize DP table with -1 (not calculated)
         // dp[i][buy] => max profit from day i to end, given buy status
-        vector<vector<long>> dp(n, vector<long>(2, -1));
+        vector<vector<int>> dp(n, vector<int>(2, -1));
 
         // Start from day 0, with permission to buy
-        long ans = getAns(prices, 0, 0, n, dp);
+        int ans = getAns(prices, 0, 0, n, dp);
         return ans;
     }
 };
