@@ -1,0 +1,47 @@
+class Solution {
+private:
+    // DFS helper function
+    // node : current vertex
+    // vis  : visited array
+    // st   : stack to store the topological order
+    // adj  : adjacency list
+    void dfs(int node, vector<int> &vis, stack<int> &st, vector<int> adj[]) {
+        vis[node] = 1; // mark current node as visited
+        
+        // Explore all unvisited neighbors
+        for (auto it : adj[node]) {
+            if (!vis[it]) {
+                dfs(it, vis, st, adj);
+            }
+        }
+        
+        // Once all neighbors are processed, push current node into stack
+        // (ensures nodes are pushed after their dependencies)
+        st.push(node);
+    }
+    
+public:
+    // Function to return list containing vertices in Topological order.
+    // V   : number of vertices
+    // adj : adjacency list of the graph
+    vector<int> topoSort(int V, vector<int> adj[]) {
+        vector<int> vis(V, 0); // visited vector initialized with 0 (unvisited)
+        stack<int> st;         // stack to maintain ordering
+        
+        // Call DFS for every unvisited node
+        for (int i = 0; i < V; i++) {
+            if (!vis[i]) {
+                dfs(i, vis, st, adj);
+            }
+        }
+
+        // Pop all nodes from the stack to get topological order
+        vector<int> ans;
+        while (!st.empty()) {
+            ans.push_back(st.top());
+            st.pop();
+        }
+        
+        return ans; // return the topological sorted order
+    }
+};
