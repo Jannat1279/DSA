@@ -1,0 +1,47 @@
+class Solution {
+  public:
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(int N, vector<int> adj[]) {
+        queue<int> que;                  // queue to store nodes with indegree 0
+        vector<int> indegree(N, 0);      // indegree array
+        int count = 0;                   // number of nodes processed
+        
+        // 1. Compute indegree of every node
+        // For each edge u -> v, indegree[v] increases
+        for (int u = 0; u < N; u++) {
+            for (int &v : adj[u]) {
+                indegree[v]++;
+            }
+        }
+        
+        // 2. Initialize queue with nodes having indegree = 0
+        // These nodes have no dependencies
+        for (int i = 0; i < N; i++) {
+            if (indegree[i] == 0) {
+                que.push(i);
+                count++; // count nodes that can be safely placed
+            }
+        }
+        
+        // 3. BFS traversal (Kahn’s Algorithm)
+        while (!que.empty()) {
+            int u = que.front();
+            que.pop();
+            
+            // For each neighbor, reduce its indegree
+            for (int &v : adj[u]) {
+                indegree[v]--;
+                
+                // If indegree becomes 0, push into queue
+                if (indegree[v] == 0) {
+                    que.push(v);
+                    count++; // this node is now processed
+                }
+            }
+        }
+        
+        // If we could not process all N nodes,
+        // that means a cycle exists (some nodes still had non-zero indegree)
+        return count != N;
+    }
+};
