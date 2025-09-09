@@ -1,0 +1,47 @@
+class Solution {
+  public:
+    vector<int> shortestPath(vector<vector<int>>& edges, int N, int M, int src) {
+        // Create an adjacency list to represent the graph.
+        // Since the graph is undirected, we add both (u -> v) and (v -> u).
+        vector<int> adj[N]; 
+        for (auto it : edges) {
+            adj[it[0]].push_back(it[1]); 
+            adj[it[1]].push_back(it[0]); 
+        }
+
+        // Distance array to store shortest distance from src to every node.
+        // Initially, all distances are set to a large value (infinity = 1e9).
+        int dist[N];
+        for (int i = 0; i < N; i++) dist[i] = 1e9;
+
+        // Start BFS from source node
+        dist[src] = 0;  // Distance of source to itself = 0
+        queue<int> q;
+        q.push(src); 
+
+        // Standard BFS loop
+        while (!q.empty()) {
+            int node = q.front(); 
+            q.pop(); 
+
+            // Traverse all neighbors of current node
+            for (auto it : adj[node]) {
+                // If a shorter path to neighbor is found
+                if (dist[node] + 1 < dist[it]) {
+                    dist[it] = 1 + dist[node]; 
+                    q.push(it); // Push this neighbor for further exploration
+                }
+            }
+        }
+
+        // Prepare the answer vector
+        // If a node was never reached, mark its distance as -1
+        vector<int> ans(N, -1);
+        for (int i = 0; i < N; i++) {
+            if (dist[i] != 1e9) {
+                ans[i] = dist[i]; 
+            }
+        }
+        return ans; 
+    }
+};
