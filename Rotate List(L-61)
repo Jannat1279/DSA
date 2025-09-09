@@ -1,0 +1,71 @@
+class Solution {
+public:
+    // Utility function: returns the k-th node (1-indexed) in the list.
+    ListNode* findNthNode(ListNode* temp, int k){
+        int cnt = 1;
+        while(temp != nullptr){
+            if(cnt == k) return temp;  // Found the kth node
+            cnt++;
+            temp = temp->next;         // Move to next node
+        }
+        return temp; // In case k > length (shouldn't happen here)
+    }
+
+    ListNode* rotateRight(ListNode* head, int k) {
+        // Edge case: if list is empty or no rotation needed
+        if(head == nullptr || k == 0) return head;
+
+        // Step 1: Find the length of the linked list and the tail node
+        ListNode* tail = head;
+        int len = 1;
+        while(tail->next != nullptr){
+            tail = tail->next;
+            len++;
+        }
+
+        // Step 2: If k is a multiple of length, list remains same
+        if(k % len == 0) return head;
+        k = k % len;  // Reduce unnecessary full rotations
+
+        // Step 3: Connect tail to head to make it a circular linked list
+        tail->next = head;
+
+        // Step 4: Find the (len-k)th node → this will become the new tail
+        ListNode* newLastNode = findNthNode(head, len-k);
+
+        // Step 5: The new head is (len-k+1)th node
+        head = newLastNode->next;
+
+        // Step 6: Break the circle
+        newLastNode->next = nullptr;
+
+        return head;
+    }
+};
+
+/*
+Example:
+head = [1, 2, 3, 4, 5], k = 2
+
+Step 1: Find length and tail
+Traverse the list → length = 5, tail = node with value 5.
+Connect tail to head → list becomes circular:
+1 -> 2 -> 3 -> 4 -> 5 -> (back to 1)
+
+Step 2: Handle k
+k % len = 2 % 5 = 2 → effective rotation is 2.
+New tail should be the (len - k) = (5 - 2) = 3rd node.
+
+Step 3: Find new tail (using findNthNode)
+Start from head:
+cnt=1 → node = 1
+cnt=2 → node = 2
+cnt=3 → node = 3 ✅ (newLastNode = 3)
+
+Step 4: Break the circle & set new head
+New head = newLastNode->next = 4.
+Break link: 3->next = nullptr.
+
+Final Output
+[4, 5, 1, 2, 3]
+*/
