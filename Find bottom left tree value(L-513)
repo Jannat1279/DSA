@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int findBottomLeftValue(TreeNode* root) {
+        // Queue for BFS traversal
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        int ans = root->val; // initialize with root value
+        
+        while(!q.empty()){
+            int size = q.size(); 
+            
+            // Traverse current level
+            for(int i = 0; i < size; i++){
+                TreeNode* node = q.front();
+                q.pop();
+                
+                // The first node of this level is the leftmost
+                if(i == 0) ans = node->val;
+                
+                // Push children into queue (left first, then right)
+                if(node->left) q.push(node->left);
+                if(node->right) q.push(node->right);
+            }
+        }
+        
+        // The last updated ans will be bottom-left value
+        return ans;
+    }
+};
