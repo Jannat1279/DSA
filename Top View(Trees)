@@ -1,0 +1,57 @@
+class Solution{
+public:
+    // Function to return the top view of the binary tree
+    vector<int> topView(Node* root){
+        // Vector to store the final top view nodes
+        vector<int> ans;
+        
+        // If tree is empty, return empty result
+        if(root == NULL){
+            return ans;
+        }
+        
+        // Map to store the first node at each horizontal distance (line)
+        // Key   -> vertical line number (negative = left, positive = right)
+        // Value -> node's data visible from top
+        map<int, int> mpp;
+        
+        // Queue for BFS traversal
+        // Each element contains (Node*, vertical_line_number)
+        queue<pair<Node*, int>> q;
+        
+        // Start BFS with root at vertical line 0
+        q.push({root, 0});
+        
+        // Standard BFS traversal
+        while(!q.empty()){
+            // Take the front element from the queue
+            auto it = q.front();
+            q.pop();
+            Node* node = it.first;
+            int line = it.second; // vertical line of current node
+            
+            // If this vertical line hasn't been seen before,
+            // store the node's data (first visible node from top)
+            if(mpp.find(line) == mpp.end()){
+                mpp[line] = node->data;
+            }
+            
+            // If left child exists, push it into queue with line - 1
+            if(node->left != NULL){
+                q.push({node->left, line - 1});
+            }
+            
+            // If right child exists, push it into queue with line + 1
+            if(node->right != NULL){
+                q.push({node->right, line + 1});
+            }
+        }
+        
+        // Collect the top view nodes from leftmost line to rightmost line
+        for(auto it : mpp){
+            ans.push_back(it.second);
+        }
+        
+        return ans;
+    }
+};
