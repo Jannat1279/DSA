@@ -27,35 +27,38 @@ public:
 
 
 /*
-Example:
         1
        / \
       2   3
-     /
-    4
+       \    \
+        5    4
 
-✅ Step-by-Step Calls:
-📞 preOrder(1, 1, ans = [])
-ans.size() = 0 < 1 → Add 1 → ans = [1]
-Right child exists → Call preOrder(3, 2, ans)
-Left child exists → Call preOrder(2, 2, ans) (after the right call)
+Level 0
+size = q.size() = 1
+Loop i = 0:
+Pop → node = 1, q = []
+i == size - 1 → it's the last node of level → ans.push_back(1) → ans = [1]
+Push children: left 2, right 3 → q = [2, 3]
 
-📞 preOrder(3, 2, ans = [1])
-ans.size() = 1 < 2 → Add 3 → ans = [1, 3]
-Right child = NULL → no call
-Left child = NULL → no call
-(Return back to node 1, now call left child 2)
+Level 1
+size = 2
+Loop i = 0:
+Pop → node = 2, q = [3]
+i != size - 1 → don't record
+Push children: left NULL, right 5 → q = [3, 5]
+Loop i = 1:
+Pop → node = 3, q = [5]
+i == size - 1 → record → ans.push_back(3) → ans = [1, 3]
+Push children: left NULL, right 4 → q = [5, 4]
 
-📞 preOrder(2, 2, ans = [1, 3])
-ans.size() = 2 == 2 → Already visited level 2 → do nothing
-Right child = NULL → no call
-Left child exists → Call preOrder(4, 3, ans)
-
-📞 preOrder(4, 3, ans = [1, 3])
-ans.size() = 2 < 3 → Add 4 → ans = [1, 3, 4]
-Right = NULL, Left = NULL → return
-
-🔚 Final Output:
-[1, 3, 4]
-
+Level 2
+size = 2
+Loop i = 0:
+Pop → node = 5, q = [4]
+i != size - 1 → don't record
+5 has no children → q stays [4]
+Loop i = 1:
+Pop → node = 4, q = []
+i == size - 1 → record → ans.push_back(4) → ans = [1, 3, 4]
+4 has no children
 */
