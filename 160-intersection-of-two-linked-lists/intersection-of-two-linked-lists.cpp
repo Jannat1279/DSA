@@ -46,6 +46,6 @@ public:
         }
 
         // Step 4: Return either intersection node or nullptr (if no intersection)
-        return headA;
+        return headB;
     }
 };
