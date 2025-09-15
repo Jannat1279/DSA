@@ -44,29 +44,3 @@ public:
         return false; // No such pair found
     }
 };
-
-/*
-Example:
-        5
-       / \
-      3   6
-     / \    \
-    2   4    7
-
-Target sum k = 9
-🔧 Step 1: Inorder Traversal
-We perform an inorder traversal (left → root → right), which gives the sorted node values:
-
-store = [2, 3, 4, 5, 6, 7]
-🔧 Step 2: Two-Pointer Approach
-Start = 0 → store[0] = 2
-End = 5 → store[5] = 7
-Check the sum:
-
-🔁 First Iteration:
-2 + 7 = 9 ✅
-We found a pair!
-
-✅ Final Output:
-true
-*/
