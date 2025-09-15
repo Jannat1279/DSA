@@ -30,26 +30,3 @@ public:
         return NULL;
     }
 };
-
-/*
-Example:
-
-        6
-       / \
-      2   8
-     / \ / \
-    0  4 7  9
-      / \
-     3   5
-
-lowestCommonAncestor(root = 6, p = 2, q = 4)
-root = 6
-
-Both 2 and 4 are < 6 → go left
-root = 2
-p = 2, q = 4
-
-One is root itself, other is in right subtree
-✅ LCA = 2
-
-*/
