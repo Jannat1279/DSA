@@ -26,3 +26,27 @@ public:
         return max(left, right) + node->val;
     }
 };
+
+/*
+Example:
+       -10
+       /  \
+     9    20
+         /  \
+        15   7
+
+Steps:
+
+Start at root -10.
+For node 9 → left=0, right=0 → maxi = max(-∞, 0+0+9) = 9. Returns 9.
+For node 15 → maxi = max(9, 0+0+15) = 15. Returns 15.
+For node 7 → maxi = max(15, 0+0+7) = 15. Returns 7.
+For node 20 → left=15, right=7.
+maxi = max(15, 15+7+20=42) = 42.
+Returns max(15,7)+20 = 35.
+For root -10 → left=9, right=35.
+maxi = max(42, 9+35-10=34) = 42.
+Returns 25.
+
+👉 Final Answer = 42 (path 15 → 20 → 7)
+*/
