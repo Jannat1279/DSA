@@ -1,13 +1,3 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -49,6 +39,49 @@ public:
 
     // Return the actual result list (skipping dummy head)
     return result->next;
-
     }
 };
+
+/*
+Example:
+l1 = [2 → 4 → 3]   // represents the number 342
+l2 = [5 → 6 → 4]   // represents the number 465
+
+=> Output list = [7 → 0 → 8]
+
+Step-by-step execution:
+Initialization:
+result = new ListNode(0) → dummy head
+ptr = result (points at dummy node)
+carry = 0
+
+Iteration 1:
+l1->val = 2, l2->val = 5, carry = 0
+sum = 2 + 5 + 0 = 7
+carry = 7 / 10 = 0, sum = 7 % 10 = 7
+Create new node 7, attach after result.
+ptr = 7, advance l1 = 4, l2 = 6.
+List so far: dummy → 7
+
+Iteration 2:
+l1->val = 4, l2->val = 6, carry = 0
+sum = 4 + 6 + 0 = 10
+carry = 10 / 10 = 1, sum = 10 % 10 = 0
+Create new node 0, attach.
+ptr = 0, advance l1 = 3, l2 = 4.
+List so far: dummy → 7 → 0
+
+Iteration 3:
+l1->val = 3, l2->val = 4, carry = 1
+sum = 3 + 4 + 1 = 8
+carry = 8 / 10 = 0, sum = 8 % 10 = 8
+Create new node 8, attach.
+ptr = 8, advance l1 = null, l2 = null.
+
+List so far: dummy → 7 → 0 → 8
+
+After loop:
+Both l1 and l2 are null.
+
+carry = 0, so no extra node.
+*/
