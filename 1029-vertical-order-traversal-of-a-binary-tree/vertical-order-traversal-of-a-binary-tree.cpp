@@ -6,8 +6,7 @@ public:
     // vertical -> horizontal distance from the root (left = -1, right = +1)
     // level    -> depth (top to bottom = increasing level)
     // nodes    -> nested map to store node values by vertical and level
-    void preorder(TreeNode* node, int vertical, int level,
-                  map<int, map<int, multiset<int>>>& nodes) {
+    void preorder(TreeNode* node, int vertical, int level, map<int, map<int, multiset<int>>>& nodes) {
         if (node == nullptr)
             return; // Base case: null node, do nothing
 
