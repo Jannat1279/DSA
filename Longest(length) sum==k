@@ -1,0 +1,31 @@
+// Problem Statement: Given an array and a sum k, we need to print the length of the longest subarray that sums to k.
+
+int getLongestSubarray(vector<int>& a, long long k) {
+    int n = a.size(); // size of the array
+
+    int left = 0, right = 0; // two pointers for sliding window
+    long long sum = a[0];    // current window sum
+    int maxLen = 0;          // stores the maximum length of subarray with sum = k
+
+    // Traverse the array with the right pointer
+    while (right < n) {
+        // Shrink the window from the left side until the sum <= k
+        while (left <= right && sum > k) {
+            sum -= a[left];  // remove leftmost element from sum
+            left++;          // move the left pointer ahead
+        }
+
+        // If current window sum == k, update the maximum length
+        if (sum == k) {
+            maxLen = max(maxLen, right - left + 1);
+        }
+
+        // Move the right pointer forward (expand window)
+        right++;
+        if (right < n) {
+            sum += a[right]; // include the new element in sum
+        }
+    }
+
+    return maxLen; // return the maximum length found
+}
