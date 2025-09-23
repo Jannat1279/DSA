@@ -1,3 +1,6 @@
+//Time Complexity: O(n)
+//Space Complexity: O(n) (for the output string)
+
 class Solution {
 public:
     string removeOuterParentheses(string s) {
