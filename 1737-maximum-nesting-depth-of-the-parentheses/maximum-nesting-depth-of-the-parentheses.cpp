@@ -1,3 +1,5 @@
+// time - O(n), space - O(1)
+
 class Solution {
 public:
     // Function to calculate the maximum depth of nested parentheses in a string
