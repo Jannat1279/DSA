@@ -1,3 +1,6 @@
+//Time Complexity: O(n)
+//Space Complexity: O(n)
+
 class Solution {
 public:
     // Function to compute the minimum number of parentheses needed
