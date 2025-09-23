@@ -1,3 +1,9 @@
+//Time Complexity: O(N log N * K + M)
+//Space Complexity: O(M + log N)
+
+K = average string length, sort - O(N log N), O(M) - loop
+O(log N) - auxiliary space
+
 #include<bits/stdc++.h>
 class Solution {
 public:
