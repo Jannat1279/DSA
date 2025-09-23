@@ -1,3 +1,6 @@
+//Time Complexity: O(n)
+//Space Complexity: O(1) (constant, since char set is fixed and finite)
+
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
