@@ -1,3 +1,6 @@
+//Time Complexity: O(m)
+//Space Complexity: O(m)
+
 class Solution {
 public:
     // Function to check if 'goal' is a rotation of string 's'
