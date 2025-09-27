@@ -1,0 +1,43 @@
+class MyQueue {
+public:
+    stack<int> s1; // Primary stack to hold queue elements
+    stack<int> s2; // Helper stack for push operation
+
+    MyQueue() { }
+
+    // Enqueue operation
+    void push(int x) {
+        // Step 1: Move all elements from s1 to s2
+        while(!s1.empty()) {      // O(n)
+            s2.push(s1.top());
+            s1.pop();
+        }
+
+        // Step 2: Push the new element onto s2
+        s2.push(x);               // O(1)
+
+        // Step 3: Move everything back to s1
+        while(!s2.empty()) {      // O(n)
+            s1.push(s2.top());
+            s2.pop();
+        }
+        // Now s1 has the queue order maintained (front at top).
+    }
+
+    // Dequeue operation
+    int pop() {
+        int curr = s1.top();  // Get the front element
+        s1.pop();             // Remove it
+        return curr;
+    }
+
+    // Peek the front of the queue
+    int peek() {
+        return s1.top();
+    }
+
+    // Check if queue is empty
+    bool empty() {
+        return s1.empty();
+    }
+};
