@@ -1,3 +1,5 @@
+// time - O(n), space - O(n)
+
 #include<bits/stdc++.h>
 class Solution {
 public:
