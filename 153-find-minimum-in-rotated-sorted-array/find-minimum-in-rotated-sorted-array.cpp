@@ -1,3 +1,5 @@
+// time - O(log n), space - O(1)
+
 class Solution {
 public:
     int findMin(vector<int>& nums) {
