@@ -1,13 +1,4 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}                // Default constructor
- *     ListNode(int x) : val(x), next(nullptr) {}           // Constructor with value
- *     ListNode(int x, ListNode *next) : val(x), next(next) {} // Constructor with value and next node
- * };
- */
+// time - O(m+n), space - O(m+n)=O(1)
 
 class Solution {
 public:
