@@ -1,0 +1,59 @@
+// time - O(n), space - O(1)
+
+class Solution {
+public:
+    // Function to find maximum subarray sum (Kadane's Algorithm)
+    int kadanesMax(vector<int>& nums, int n) {
+        int sum     = nums[0];  // current subarray sum
+        int maxSum  = nums[0];  // maximum subarray sum found so far
+        
+        for(int i = 1; i<n; i++) {
+            // Either extend the previous subarray or start a new one from nums[i]
+            sum     = max(sum + nums[i], nums[i]);
+            // Update the maximum sum if the current sum is larger
+            maxSum  = max(maxSum, sum);
+        }
+        
+        return maxSum;
+    }
+    
+    // Function to find minimum subarray sum (Kadane’s variation)
+    int kadanesMin(vector<int>& nums, int n) {
+        int sum     = nums[0];  // current subarray sum
+        int minSum  = nums[0];  // minimum subarray sum found so far
+        
+        for(int i = 1; i<n; i++) {
+            // Either extend the previous subarray or start a new one from nums[i]
+            sum     = min(sum + nums[i], nums[i]);
+            // Update the minimum sum if the current sum is smaller
+            minSum  = min(minSum, sum);
+        }
+        
+        return minSum;
+    }
+    
+    // Function to find the maximum subarray sum in a circular array
+    int maxSubarraySumCircular(vector<int>& nums) {
+        int n = nums.size();
+        
+        // Total sum of all elements
+        int SUM = accumulate(begin(nums), end(nums), 0);
+        
+        // Find the minimum subarray sum
+        int minSum = kadanesMin(nums, n);
+        
+        // Find the maximum subarray sum (normal Kadane’s)
+        int maxSum = kadanesMax(nums, n);
+        
+        // Maximum sum of circular subarray = total sum - min subarray sum
+        int circSum = SUM - minSum;
+        
+        // If all elements are negative, maxSum will be the answer
+        // (because circSum would incorrectly become 0 in that case)
+        if(maxSum > 0) {
+            return max(maxSum, circSum);
+        }
+        
+        return maxSum;
+    }
+};
