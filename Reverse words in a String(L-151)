@@ -1,0 +1,45 @@
+// time - O(n), space - O(1)
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        // Step 1: Reverse the entire string
+        // Example: "the sky is blue" -> "eulb si yks eht"
+        reverse(s.begin(), s.end());
+
+        int n = s.size();
+        int left = 0, right = 0, i = 0;
+
+        // Step 2: Process each word in the reversed string
+        while (i < n) {
+            // Skip leading spaces
+            while (i < n && s[i] == ' ') { 
+                i++; 
+            }
+            if (i == n) break; // no more words
+
+            // Copy characters of the current word to the "right" pointer
+            while (i < n && s[i] != ' ') {
+                s[right++] = s[i++]; 
+            }
+
+            // Reverse the current word to restore original order
+            // Example: "eulb" -> "blue"
+            reverse(s.begin() + left, s.begin() + right);
+
+            // Add a single space after the word
+            s[right++] = ' ';
+
+            // Move "left" to the next position for the upcoming word
+            left = right;
+
+            // Move past extra space in original string
+            i++;
+        }
+
+        // Step 3: Remove the trailing space at the end
+        s.resize(right - 1);
+
+        return s;
+    }
+};
