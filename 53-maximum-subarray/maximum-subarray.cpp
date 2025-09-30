@@ -1,3 +1,6 @@
+ //TC - O(n)
+ //SC - O(1)
+
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
@@ -12,10 +15,8 @@ public:
     }
 };
 
-/* TC - O(n)
- SC - O(1)
- 
- Example:
+/*
+Example:
  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 | j | nums [j] | curr_max = max(nums [j], curr_max + nums [j])   | max_so_far = max(max_so_far, curr_max)      |
 | - | -------- | ----------------------------------------------- | ------------------------------------------- |
