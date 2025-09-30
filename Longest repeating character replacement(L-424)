@@ -1,0 +1,39 @@
+//time- O(n), space - O(26)=O(1)
+
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        // Frequency array to store the count of each character
+        vector<int> freq(26, 0);
+
+        int left = 0;       // Left pointer of the sliding window
+        int maxFreq = 0;    // Stores the frequency of the most frequent character in the window
+        int maxWindow = 0;  // Result: maximum window size found
+
+        // Iterate through the string with the right pointer
+        for (int right = 0; right < s.size(); right++) {
+            // Update frequency of the current character
+            freq[s[right] - 'A']++;
+
+            // Update the maximum frequency of a character seen so far in the current window
+            maxFreq = max(maxFreq, freq[s[right] - 'A']);
+
+            // Current window length
+            int windowLength = right - left + 1;
+
+            // Condition: If replacements required exceed k, shrink the window
+            // (windowLength - maxFreq = number of chars to change in this window)
+            if (windowLength - maxFreq > k) {
+                freq[s[left] - 'A']--; // Remove the leftmost character from the window
+                left++;                // Shrink the window from the left
+            }
+
+            // Update the maxWindow size after adjustments
+            windowLength = right - left + 1;
+            maxWindow = max(maxWindow, windowLength);
+        }
+
+        return maxWindow;
+    }
+};
+
