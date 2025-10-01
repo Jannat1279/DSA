@@ -1,0 +1,36 @@
+// time - O(n), space - O(1)
+
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+        int n = nums.size();
+        if(n == 1) return 0;  // Single element can't form equal 0s and 1s
+        
+        unordered_map<int, int> mp;  
+        // mp stores: {prefixSum → earliest index where this prefixSum occurred}
+        // prefixSum is computed as (# of 1s - # of 0s) up to index i
+        
+        int currSum = 0;   // Running prefix sum difference
+        int maxL = 0;      // Maximum length of subarray found
+        
+        mp[0] = -1;        // Important: base case → prefix sum 0 before array starts
+        
+        for(int i = 0; i < n; i++) {
+            // Update prefix sum: +1 for '1', -1 for '0'
+            currSum += (nums[i] == 1) ? 1 : -1;
+            
+            // Case 1: If this prefix sum has been seen before,
+            // it means the subarray between previous index+1 and current i
+            // has equal number of 0s and 1s
+            if(mp.find(currSum) != mp.end()) {
+                maxL = max(maxL, i - mp[currSum]);
+            } 
+            // Case 2: If prefix sum is seen first time, record its index
+            else {
+                mp[currSum] = i;
+            }
+        }
+        
+        return maxL; // Return the maximum subarray length
+    }
+};
