@@ -1,3 +1,5 @@
+// time - O(n), space - O(1)
+
 int secondLargest*(vector<int> nums){
   int max=nums[0];
   int slargest=INT_MIN;
