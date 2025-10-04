@@ -1,3 +1,5 @@
+// time - O(n), space - recursion+table - > O(n)
+
 class Solution {
 public:
     // Function to compute the maximum profit using recursion + memoization
