@@ -1,0 +1,56 @@
+// time - O(m*n), space - O(m*n) -> recursion stack in the worst case
+
+// Directions: down, up, right, left
+vector<pair<int, int>> dir{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+class Solution {
+public:
+    // Depth-First Search to mark all connected land cells
+    void dfs(vector<vector<char>>& grid, int i, int j) {
+        // Base Case: if out of bounds or current cell is not land ('1'), stop recursion
+        if(i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != '1')
+            return;
+
+        /*
+        Optional: Lambda function for boundary check
+        auto isSafe = [&](int &i, int &j) {
+            if(i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != '1')
+                return false;
+            return true;
+        };
+        */
+
+        // Mark the current cell as visited to avoid revisiting
+        grid[i][j] = '$';  // could use any marker other than '1' or '0'
+
+        // Explore all 4 possible directions (down, up, right, left)
+        for(pair<int, int> &p : dir) {
+            int i_ = i + p.first;  // next row
+            int j_ = j + p.second; // next column
+            dfs(grid, i_, j_);     // recursive DFS call
+        }
+    }
+
+    // Main function to count number of islands
+    int numIslands(vector<vector<char>>& grid) {
+        if(grid.size() == 0)  // empty grid edge case
+            return 0;
+
+        int m = grid.size();      // number of rows
+        int n = grid[0].size();   // number of columns
+        int count = 0;            // number of islands
+
+        // Iterate over all cells in the grid
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
+                // If cell is land ('1'), start DFS to mark entire island
+                if(grid[i][j] == '1') {
+                    dfs(grid, i, j);  // mark all connected land
+                    count++;           // increment island count
+                }
+            }
+        }
+
+        return count;  // return total number of islands
+    }
+};
