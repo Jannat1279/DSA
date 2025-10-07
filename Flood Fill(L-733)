@@ -1,0 +1,28 @@
+class Solution {
+public:
+    // Directions: down, up, right, left
+    vector<pair<int, int>> dir{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    void dfs(vector<vector<int>>& image, int i, int j, int newColor, int origColor) {
+        // Base Case: if out of bounds or not original color, return
+        if (i < 0 || i >= image.size() || j < 0 || j >= image[0].size() || image[i][j] != origColor)
+            return;
+
+        // Change current cell to new color
+        image[i][j] = newColor;
+
+        // Explore all 4 directions
+        for (auto &p : dir) {
+            int i_ = i + p.first;
+            int j_ = j + p.second;
+            dfs(image, i_, j_, newColor, origColor);
+        }
+    }
+
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        int origColor = image[sr][sc];
+        if (origColor == newColor) return image; // nothing to do if same color
+        dfs(image, sr, sc, newColor, origColor);
+        return image;
+    }
+};
