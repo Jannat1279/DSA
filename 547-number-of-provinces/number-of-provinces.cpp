@@ -1,3 +1,5 @@
+// time - O(n^2), space - O(n)
+
 class Solution {
 public:
     int n; // number of nodes (cities)
