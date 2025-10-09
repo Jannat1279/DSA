@@ -1,0 +1,26 @@
+// time - O(a*b), space - O(1)
+
+#include <iostream>
+using namespace std;
+
+// Function to find LCM without using GCD
+int lcm(int a, int b) {
+    int maxNum = (a > b) ? a : b;  // start from the larger of a and b
+
+    while (true) {
+        if (maxNum % a == 0 && maxNum % b == 0) {
+            return maxNum;  // found the LCM
+        }
+        maxNum++;
+    }
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    cout << "LCM of " << a << " and " << b << " is " << lcm(a, b) << endl;
+
+    return 0;
+}
