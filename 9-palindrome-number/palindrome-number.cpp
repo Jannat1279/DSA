@@ -1,3 +1,5 @@
+// time - d digits=O(log x), space - O(1)
+
 class Solution {
 public:
     bool isPalindrome(int x) {
