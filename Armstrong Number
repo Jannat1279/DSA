@@ -1,0 +1,31 @@
+time - O(d), space - O(1)
+
+#include <iostream>
+#include <cmath>   // for pow()
+using namespace std;
+
+// Function to check if a number is Armstrong
+bool isArmstrong(int n) {
+    int temp = n;
+    int digits = 0;
+    int sum = 0;
+
+    // Step 1: Count number of digits
+    while (temp > 0) {
+        digits++;
+        temp /= 10;
+    }
+
+    temp = n;  // reset temp
+
+    // Step 2: Calculate sum of each digit raised to power of total digits
+    while (temp > 0) {
+        int r = temp % 10;
+        sum += pow(r, digits);
+        temp /= 10;
+    }
+
+    // Step 3: Compare sum with original number
+    return (sum == n);
+}
+
