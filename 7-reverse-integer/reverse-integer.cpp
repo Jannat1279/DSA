@@ -1,3 +1,5 @@
+// time - O(d)=O(log x), space - O(1)
+
 class Solution {
 public:
     int reverse(int x) {
