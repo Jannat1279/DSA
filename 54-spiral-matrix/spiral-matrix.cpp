@@ -1,3 +1,5 @@
+//time - O(m*n), space - O(m*n) 
+
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
